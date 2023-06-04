@@ -1,0 +1,30 @@
+<div class="cover mb-4 d-flex align-items-center justify-content-center">
+  <div class="text-center">
+    <h1>InstaExplorer</h1>
+    <h3 class="typed-js" data-controller="typed-js"></h3>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">See all user</h3>
+    <%# <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
+  </div>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="co-12 col-sm-6 col-md-4 mb-3">
+        <%= link_to user_path(user), class:"text-decoration-none" do %>
+          <% if user.avatar.nil? %>
+            <img src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Avatar" class="avatar-large">
+          <% else %>
+            <img src= "<% user.avatar %>"% alt="Avatar" class="avatar-large">
+          <% end %>
+          <%= user.username %>
+          <br>
+        <% end %>
+        Bio: <%= user.bio %>
+        <br>
+        Location: <%= user.location %>
+      </div>
+    <% end %>
+  </div>
+</div>
