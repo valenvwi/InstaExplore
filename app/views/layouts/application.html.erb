@@ -8,9 +8,29 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>
 
   <body>
-    <%= yield %>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+            <i class="fa-brands fa-wpexplorer" style="color: #12aee2;"></i>
+            InstaExplore
+          </a>
+        </div>
+        <div class="user-section">
+          <a><i class="fa fa-compass"></i></a>
+          <a><i class="fa fa-heart"></i></a>
+          <a><i class="fa fa-user"></i></a>
+        </div>
+      </div>
+    </nav>
+
+      <%= yield %>
+
   </body>
 </html>

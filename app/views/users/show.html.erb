@@ -1,4 +1,55 @@
-<%= @user.avatar %>
-<%= @user.username %>
-<%= @user.bio %>
-<%= @user.location %>
+<div class="user-profile">
+  <div class="profile row">
+    <div class="d-flex justify-content-start align-items-center">
+      <div>
+        <% if @user.avatar.nil? %>
+          <img src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Avatar" class="avatar-large m-3">
+        <% else %>
+            <img src= <%=@user.avatar %> class="avatar-large m-3">
+        <% end %>
+      </div>
+      <div class="col-6 m-3 align-middle">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h3><%= @user.username%></h3>
+          </div>
+          <div><i class="fa-solid fa-pen-to-square" style="color: #12aee2;"></i>
+          </div>
+        </div>
+        <h5><%= @user.location %></h5>
+        <p class="mb-0"><%= @user.bio %></p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around align-items-center m-1">
+      <div class="d-flex justify-content-center text-center">12 <br>
+      posts</div>
+      <div class="d-flex justify-content-center text-center">10 <br>
+      followers</div>
+      <div class="d-flex justify-content-center text-center"> 20 <br>
+      following</div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded mt-3">
+    <div class="user-tabs d-flex justify-content-around text-center">
+      <a class="tab active" href="">
+        <i class="fa fa-th"></i>
+        Posts
+      </a>
+      <a class="tab" href="">
+        <i class="fa fa-bookmark"></i>
+        Saved
+      </a>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <img src= <%=@user.avatar%> class="w-100 my-3" >
+        </div>
+        <div class="col-6">
+          2 of 2
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

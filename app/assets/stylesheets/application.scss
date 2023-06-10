@@ -10,3 +10,55 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+body {
+  margin: 20px;
+  background-color: rgb(212, 237, 235);
+}
+
+.container{
+  max-width: 1000px;
+}
+.navbar{
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+}
+.user-section{
+  a{
+    padding-left: 15px;
+  }
+  i.fa{
+    font-size: 22px;
+    color: #000000d4;
+  }
+}
+.search-form{
+  input{
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+  p{
+    color: #999;
+  }
+
+  .user-tabs{
+    border-top: 1px solid #efefef;
+
+  a.tab{
+      height: 35px;
+      line-height: 45px;
+      color: #999;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      i{
+        padding-right: 1px;
+      }
+    }
+    a.active{
+      color: #262626;
+    }
+  }
