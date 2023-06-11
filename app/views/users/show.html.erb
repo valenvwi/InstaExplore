@@ -13,7 +13,10 @@
           <div>
             <h3><%= @user.username%></h3>
           </div>
-          <div><i class="fa-solid fa-pen-to-square" style="color: #12aee2;"></i>
+          <div>
+            <%= link_to edit_user_path(@user) do %>
+              <i class="fa-solid fa-pen-to-square" style="color: #12aee2;"></i>
+            <% end %>
           </div>
         </div>
         <h5><%= @user.location %></h5>
