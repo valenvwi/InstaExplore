@@ -13,6 +13,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    # if params[:user][:avatar].present?
+    #   uploaded_file = params[:user][:avatar]
+    #   cloudinary_response = Cloudinary::Uploader.upload(uploaded_file.tempfile, folder: 'avatars')
+    #   @user.avatar = cloudinary_response['secure_url']
+    # end
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to user_url(@user), notice: "user was successfully updated." }
