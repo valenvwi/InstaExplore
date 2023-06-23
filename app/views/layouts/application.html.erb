@@ -17,10 +17,10 @@
     <nav class="navbar navbar-light bg-light d-flex">
       <div class="container">
         <div class="logo">
-          <a class="navbar-brand" href="#">
+          <%= link_to root_path, class: "navbar-brand" do %>
             <i class="fa-brands fa-wpexplorer" style="color: #12aee2;"></i>
             InstaExplore
-          </a>
+          <% end %>
         </div>
         <div class="user-section">
           <a><i class="fa fa-compass"></i></a>

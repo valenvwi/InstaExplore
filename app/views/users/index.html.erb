@@ -16,10 +16,10 @@
     <% @users.each do |user| %>
       <div>
         <%= link_to user_path(user), class:"text-decoration-none" do %>
-          <% if user.avatar.nil? %>
-            <img src="https://as1.ftcdn.net/v2/jpg/03/46/83/96/1000_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Avatar" class="avatar m-2">
+          <% if user.avatar.key.nil? %>
+            <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
           <% else %>
-            <img src= <%=user.avatar %> class="avatar m-2">
+            <%= cl_image_tag user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
           <% end %>
           <%= user.username %>
           <br>
