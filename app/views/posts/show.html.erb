@@ -1,18 +1,28 @@
+<div class="d-flex">
 <%= link_to user_path(@post.user), class:"text-decoration-none" do %>
-  <% if @post.user.avatar.key.nil? %>
-    <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
-  <% else %>
-    <%= cl_image_tag @post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+  <div>
+    <% if @post.user.avatar.key.nil? %>
+      <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
+    <% else %>
+      <%= cl_image_tag @post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+    <% end %>
+  </div>
+  <div>
+    <li><%= @post.user.username %></li>
   <% end %>
-  <%= @post.user.username %>
-  <br>
-<% end %>
+    <li><%= @post.location %></li>
+  </div>
+</div>
 <% @post.images.each do |image| %>
   <%= cl_image_tag image.key, height: 300, width: 400, crop: :fill %>
 <% end %>
-<li><%= @post.title %></li>
-<li><%= @post.description %></li>
-<li><%= @post.location %></li>
+<div>
+  <i class="fa-regular fa-heart"></i>
+  <i class="fa-solid fa-heart"></i>
+  <i class="fa-regular fa-comment"></i>
+</div>
+<li><h5><%= @post.title %></h5></li>
+<li><p><%= @post.description %></p></li>
  <p>
   <% if policy(@post).edit? %>
     <%= link_to "Edit this post", edit_post_path(@post) %> |
