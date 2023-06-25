@@ -1,0 +1,22 @@
+<%= link_to user_path(@post.user), class:"text-decoration-none" do %>
+  <% if @post.user.avatar.key.nil? %>
+    <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
+  <% else %>
+    <%= cl_image_tag @post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+  <% end %>
+  <%= @post.user.username %>
+  <br>
+<% end %>
+<% @post.images.each do |image| %>
+  <%= cl_image_tag image.key, height: 300, width: 400, crop: :fill %>
+<% end %>
+<li><%= @post.title %></li>
+<li><%= @post.description %></li>
+<li><%= @post.location %></li>
+ <p>
+  <% if policy(@post).edit? %>
+    <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <% end %>
+  <%= button_to "Destroy this post", @post, method: :delete if policy(@post).destroy? %>
+  <%= link_to "All post", root_path %>
+</p>

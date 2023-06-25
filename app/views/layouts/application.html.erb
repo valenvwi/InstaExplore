@@ -14,6 +14,7 @@
 
   <body>
     <!--Navigation Bar-->
+  <% if user_signed_in? %>
     <nav class="navbar navbar-light bg-light d-flex">
       <div class="container">
         <div class="logo">
@@ -25,12 +26,19 @@
         <div class="user-section">
           <a><i class="fa fa-compass"></i></a>
           <a><i class="fa fa-heart"></i></a>
-          <a><i class="fa fa-user"></i></a>
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+            <i class="fa fa-user"></i>
+          <% end %>
         </div>
       </div>
     </nav>
+<% else %>
+  <li class="nav-item">
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  </li>
+<% end %>
 
       <%= yield %>
-
+      <%= render "shared/flashes" %>
   </body>
 </html>

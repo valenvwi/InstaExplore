@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <% post.images.each do |image| %>
+      <%= cl_image_tag image.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <li><%= post.title %></li>
+  <li><%= post.description %></li>
+  <li><%= post.location %></li>
+    <p>
+      <%= link_to "Show this post", post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post", new_post_path %>

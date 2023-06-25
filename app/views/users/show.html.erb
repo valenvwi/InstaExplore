@@ -14,9 +14,11 @@
             <h3><%= @user.username%></h3>
           </div>
           <div>
+          <% if @user == current_user %>
             <%= link_to edit_user_path(@user) do %>
               <i class="fa-solid fa-pen-to-square" style="color: #12aee2;"></i>
             <% end %>
+          <% end %>
           </div>
         </div>
         <h5><%= @user.location %></h5>
@@ -47,14 +49,20 @@
     <div class="container">
       <div class="row">
         <div class="col-6">
+        <% @user.posts.each do |post| %>
           <% if @user.avatar.key.nil? %>
             <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"w-100 my-3") %>
           <% else %>
               <%= cl_image_tag @user.avatar.key, class:"w-100 my-3" %>
           <% end %>
+          <% post.images.each do |image| %>
+            <%= cl_image_tag image.key, height: 100, width: 200, crop: :fill %>
+          <% end %>
+          <li><%= post.title %></li>
+          <li><%= post.description %></li>
+          <li><%= post.location %></li>
+          <% end %>
         </div>
-        <div class="col-6">
-          2 of 2
         </div>
       </div>
     </div>

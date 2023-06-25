@@ -2,14 +2,17 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update ]
 
   def index
-    @users = User.all
+    @user = current_user
+    authorize @user
   end
 
   def show
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
   def update
@@ -27,6 +30,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+    authorize @user
   end
 
   private
