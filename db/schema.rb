@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_23_144240) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_25_081725) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_144240) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
-    t.string "avatar"
+    t.string "avatar", default: "http://res.cloudinary.com/duq6yxlzy/image/upload/v1/development/ghaqanlp91lehqirmt1u"
     t.string "bio"
     t.string "location"
     t.datetime "created_at", null: false

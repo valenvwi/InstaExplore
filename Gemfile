@@ -29,7 +29,10 @@ gem "jbuilder"
 
 gem "dotenv-rails", groups: [:development, :test]
 
-gem "cloudinary"
+gem 'cloudinary'
+gem "activestorage-cloudinary-service"
+
+gem 'faker'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
