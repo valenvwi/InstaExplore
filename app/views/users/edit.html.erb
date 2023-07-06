@@ -1,20 +1,21 @@
-    <div class="text-center">
-      <% if @user.avatar.key.nil? %>
-        <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar-large m-3", alt:"Avatar") %>
-      <% else %>
-          <%= cl_image_tag @user.avatar.key, class:"avatar-large m-3", alt:"Avatar" %>
-      <% end %>
-      <%= simple_form_for@user, html: { "data-turbo-frame": false } do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <%= f.input :avatar, as: :file, label: "Change profile picture" %>
-
-      </div>
-    </div>
-    <%= f.input :username, label: "Name", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"}, label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
-    <%= f.input :bio, label: "Bio", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
-    <%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
-    <div class="text-center">
-      <%= f.button :submit, class: "btn btn-outline-primary", label: "Submit" %>
-    </div>
+    
+<div class="text-center">
+  <% if @user.avatar.key.nil? %>
+    <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar-large m-3", alt:"Avatar") %>
+  <% else %>
+    <%= cl_image_tag @user.avatar.key, class:"avatar-large m-3", alt:"Avatar" %>
   <% end %>
+  <%= simple_form_for@user, html: { "data-turbo-frame": false } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :avatar, as: :file, label: "Change profile picture" %>
+
+  </div>
+</div>
+<%= f.input :username, label: "Name", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"}, label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+<%= f.input :bio, label: "Bio", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+<%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+<div class="text-center">
+  <%= f.button :submit, class: "btn btn-outline-primary", label: "Submit" %>
+</div>
+<% end %>

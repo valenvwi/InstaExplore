@@ -1,5 +1,5 @@
-#posts {
-  margin: 20px 10px;
+.posts {
+  margin: 20px;
   text-align: center;
 }
 
@@ -11,4 +11,8 @@
 
 .post-img {
   width: 100%;
+}
+
+.post {
+  display: inline-block;
 }

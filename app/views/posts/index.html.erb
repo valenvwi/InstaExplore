@@ -1,34 +1,63 @@
-<p style="color: green"><%= notice %></p>
+<%# <p style="color: green">
+  <%= notice %>
+<%# </p> %>
 
-<h1>Posts</h1>
-
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= link_to post_path(post) do %>
-      <% post.images.each do |image| %>
-        <%= cl_image_tag image.key, height: 200, width: 300, crop: :fill %>
-      <% end %>
-    <% end %>
-    <li><%= post.title %></li>
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="user-info">
-        <%= link_to user_path(post.user), class:"text-decoration-none" do %>
-        <div>
-          <% if post.user.avatar.key.nil? %>
-            <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
-          <% else %>
-            <%= cl_image_tag post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
-          <% end %>
-        </div>
-        <div>
-          <li><%= post.user.username %></li>
-        <% end %>
-        </div>
+<% if user_signed_in? %>
+  <div class="header-container">
+    <div class="header">
+      <div>
+        <li><%= link_to "Follow", root_path %></li>
       </div>
       <div>
-        <i class="fa-regular fa-heart"></i>
-        <%= post.likes.count %>
+        <li><%= link_to "Explore", new_post_path%></li>
       </div>
+      <div>
+        <li><%= link_to "Nearby", new_post_path%></li>
+      </div>
+      <div>
+        <li>
+          <%= link_to user_path(current_user) do%>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+        </li>
+      </div>
+    </div>
   </div>
+<% else %>
+  <li class="footer-item">
+    <%= link_to "Login", new_user_session_path, class: "footer-link" %>
+  </li>
+<% end %>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+    <div class="post col-12 col-md-5">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="user-info">
+          <%= link_to user_path(post.user), class:"text-decoration-none" do %>
+            <div>
+              <% if post.user.avatar.key.nil? %>
+                <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
+              <% else %>
+                <%= cl_image_tag post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+              <% end %>
+            </div>
+            <div>
+              <li><%= post.user.username %></li>
+            <% end %>
+          </div>
+        </div>
+        <div>
+          <i class="fa-regular fa-heart"></i>
+          <%= post.likes.count %>
+        </div>
+      </div>
+      <%= link_to post_path(post) do %>
+        <% post.images.each do |image| %>
+          <%= cl_image_tag image.key, height: 200, width: 300, crop: :fill %>
+        <% end %>
+      <% end %>
+      <li><%= post.title %></li>
+    </div>
   <% end %>
 </div>
