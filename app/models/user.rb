@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 150 }
 
   has_one_attached :avatar
+  belongs_to :like
 end
