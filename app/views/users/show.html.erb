@@ -47,16 +47,16 @@
       </a>
     </div>
     <div class="container">
-      <div class="row">
+      <div class="row justify-content-md-center">
+        <% @posts.each do |post| %>
         <div class="col-6">
-          <% @posts.each do |post| %>
             <%= link_to post_path(post) do %>
               <% post.images.each do |image| %>
                 <%= cl_image_tag image.key, height: 150, width: 150, crop: :fill %>
               <% end %>
             <% end %>
-          <% end %>
         </div>
+        <% end %>
         </div>
       </div>
     </div>
