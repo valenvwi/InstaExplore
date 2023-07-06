@@ -10,19 +10,25 @@
       <% end %>
     <% end %>
     <li><%= post.title %></li>
-  <div class="user-info">
-    <%= link_to user_path(post.user), class:"text-decoration-none" do %>
-    <div>
-      <% if post.user.avatar.key.nil? %>
-        <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
-      <% else %>
-        <%= cl_image_tag post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
-      <% end %>
-    </div>
-    <div>
-      <li><%= post.user.username %></li>
-    <% end %>
-    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="user-info">
+        <%= link_to user_path(post.user), class:"text-decoration-none" do %>
+        <div>
+          <% if post.user.avatar.key.nil? %>
+            <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
+          <% else %>
+            <%= cl_image_tag post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+          <% end %>
+        </div>
+        <div>
+          <li><%= post.user.username %></li>
+        <% end %>
+        </div>
+      </div>
+      <div>
+        <i class="fa-regular fa-heart"></i>
+        <%= post.likes.count %>
+      </div>
   </div>
   <% end %>
 </div>
