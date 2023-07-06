@@ -5,10 +5,24 @@
 <div id="posts">
   <% @posts.each do |post| %>
     <%= link_to post_path(post) do %>
-    <% post.images.each do |image| %>
-      <%= cl_image_tag image.key, height: 300, width: 400, crop: :fill %>
+      <% post.images.each do |image| %>
+        <%= cl_image_tag image.key, height: 200, width: 300, crop: :fill %>
+      <% end %>
     <% end %>
-  <% end %>
-  <li><%= post.title %></li>
+    <li><%= post.title %></li>
+  <div class="user-info">
+    <%= link_to user_path(post.user), class:"text-decoration-none" do %>
+    <div>
+      <% if post.user.avatar.key.nil? %>
+        <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
+      <% else %>
+        <%= cl_image_tag post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+      <% end %>
+    </div>
+    <div>
+      <li><%= post.user.username %></li>
+    <% end %>
+    </div>
+  </div>
   <% end %>
 </div>

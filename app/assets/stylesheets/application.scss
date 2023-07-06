@@ -22,7 +22,8 @@ li {
 }
 
 .container{
-  max-width: 1000px;
+  // max-width: 1000px;
+  margin: 10px auto;
 }
 .navbar{
   border-bottom: 1px solid rgba(0,0,0,.0975);
@@ -66,15 +67,3 @@ li {
       color: #262626;
     }
   }
-
-
-  // .form-upload{
-  //   border: 1px solid #dbdbdb;
-  //   height: auto;
-  //   margin: auto 160px;
-  //   padding: 30px;
-  //   border-radius: 3px;
-  //   input[type='text']{
-  //     width: 100%;
-  //   }
-  // }
