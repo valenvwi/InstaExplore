@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <i class="fa-brands fa-wpexplorer" style="color: #12aee2;"></i>
+            InstaExplore
+          <% end %>
+        </div>
+        <div class="user-section">
+          <a><i class="fa fa-compass"></i></a>
+          <%= link_to user_path(current_user) do%>
+            <i class="fa fa-user"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
+            <i class="fa-solid fa-gear"></i>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+<% else %>
+  <li class="nav-item">
+    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+  </li>
+<% end %>

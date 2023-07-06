@@ -1,0 +1,23 @@
+<div>
+  <% if user_signed_in? %>
+      <footer class="footer">
+        <div class="container">
+          <div class="logo">
+            <%= link_to "home", root_path,  class: "footerbar-brand" %>
+          </div>
+          <div class="user-section">
+            <%= link_to new_post_path do%>
+            <i class="fa-solid fa-plus"></i>
+            <% end %>
+            <%= link_to user_path(current_user) do%>
+              <i class="fa fa-user"></i>
+            <% end %>
+          </div>
+        </div>
+      </footer>
+  <% else %>
+    <li class="footer-item">
+      <%= link_to "Login", new_user_session_path, class: "footer-link" %>
+    </li>
+  <% end %>
+</div>
