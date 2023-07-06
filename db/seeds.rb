@@ -1,4 +1,5 @@
 require 'faker'
+require 'fake_picture'
 require "open-uri"
 
 puts "Creating users..."
@@ -32,8 +33,8 @@ puts "creating posts"
     title: Faker::TvShows::FamilyGuy.quote,
     description: Faker::TvShows::Friends.quote,
     location: Faker::Address.city,
-    user: User.find_by(id: rand(0..11))
+    user: User.find_by(id: rand(1..12))
   )
-  post.images.attach(io: URI.open(Faker::Avatar.image), filename: "nes.png", content_type: "image/png")
+  post.images.attach(io: URI.open(FakePicture::Blog.preview), filename: "nes.png", content_type: "image/png")
   post.save!
 end

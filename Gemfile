@@ -33,6 +33,7 @@ gem 'cloudinary'
 gem "activestorage-cloudinary-service"
 
 gem 'faker'
+gem 'fake_picture'
 
 gem "devise"
 
