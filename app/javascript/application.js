@@ -4,3 +4,7 @@ import "./controllers"
 import "bootstrap"
 Turbo.session.drive = false
 //= require jquery3
+
+application.debug = false
+window.Stimulus   = application
+export { application }

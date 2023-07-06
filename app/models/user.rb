@@ -10,4 +10,5 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   belongs_to :like
+  has_many :comments
 end
