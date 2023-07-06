@@ -13,8 +13,12 @@
 
 
 body {
-  margin: 20px;
-  background-color: rgb(212, 237, 235);
+  background-color: white;
+}
+
+.application-container {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 li {
@@ -33,7 +37,7 @@ li {
     padding-left: 15px;
   }
   i.fa{
-    font-size: 22px;
+    font-size: 28px;
     color: #000000d4;
   }
 }

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +12,11 @@
   </head>
 
   <body>
-    <%= render "shared/topnavbar" %>
-    <%= yield %>
-    <%= render "shared/flashes" %>
-    <%= render "shared/bottomnavbar" %>
+    <div class="application-container">
+      <%# <%= render "shared/topnavbar" %>
+      <%= yield %>
+      <%= render "shared/flashes" %>
+      <%= render "shared/bottomnavbar" %>
+    </div>
   </body>
 </html>
