@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 150 }
 
   has_one_attached :avatar
-  belongs_to :like
+  belongs_to :like, optional: true
   has_many :comments
+
+  has_many :follows_as_follower, foreign_key: :follower_id, class_name: 'Follow'
+  has_many :follows_as_following, foreign_key: :following_id, class_name: 'Follow'
 end
