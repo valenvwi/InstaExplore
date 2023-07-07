@@ -32,7 +32,11 @@ li {
 .navbar{
   border-bottom: 1px solid rgba(0,0,0,.0975);
 }
+
 .user-section{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
   a{
     padding-left: 15px;
   }
