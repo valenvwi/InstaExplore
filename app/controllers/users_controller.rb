@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @posts = Post.where(user: @user).order(created_at: :desc)
+    @followings = Follow.all.where(follower_id: @user)
+    @followers = Follow.all.where(following_id: @user)
     authorize @user
   end
 

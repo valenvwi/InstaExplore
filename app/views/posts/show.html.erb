@@ -3,24 +3,24 @@
     <div class="container">
       <div class="footer">
         <div>
-          <li><%= link_to "Back", root_path %></li>
+          <li><%= link_to "Back", :back %></li>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
   <div class="user-info">
     <%= link_to user_path(@post.user), class:"text-decoration-none" do %>
-    <div>
-      <% if @post.user.avatar.key.nil? %>
-        <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
-      <% else %>
-        <%= cl_image_tag @post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+      <div>
+        <% if @post.user.avatar.key.nil? %>
+          <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar m-2", alt:"Avatar") %>
+        <% else %>
+          <%= cl_image_tag @post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+        <% end %>
+      </div>
+      <div>
+        <li><%= @post.user.username %></li>
       <% end %>
-    </div>
-    <div>
-      <li><%= @post.user.username %></li>
-    <% end %>
       <li><%= @post.location %></li>
     </div>
   </div>
@@ -28,20 +28,24 @@
     <%= cl_image_tag image.key, class:"post-img", crop: :fill %>
   <% end %>
   <div>
-      <% if @post.likes.find { |like| like.user_id == current_user.id} %>
-        <%= button_to post_like_path(@post), method: :delete, class:"transparent" do %>
-          <i class="fa-solid fa-heart"></i>
-        <% end %>
-      <% else %>
-        <%= button_to post_likes_path(@post), method: :post, class:"transparent"  do %>
-          <i class="fa-regular fa-heart"></i>
-        <% end %>
+    <% if @post.likes.find { |like| like.user_id == current_user.id} %>
+      <%= button_to post_like_path(@post), method: :delete, class:"transparent" do %>
+        <i class="fa-solid fa-heart"></i>
       <% end %>
+    <% else %>
+      <%= button_to post_likes_path(@post), method: :post, class:"transparent"  do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+    <% end %>
     <i class="fa-regular fa-comment"></i>
     <%= pluralize @post.likes.count, "like" %>
   </div>
-  <li><h5><%= @post.title %></h5></li>
-  <li><p><%= @post.description %></p></li>
+  <li>
+    <h5><%= @post.title %></h5>
+  </li>
+  <li>
+    <p><%= @post.description %></p>
+  </li>
   <p>
     <% if @post.user == current_user %>
       <%= link_to "Edit this post", edit_post_path(@post) %> |
@@ -51,14 +55,14 @@
   <div>
     <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
       <div data-insert-in-list-target="items">
-          <% if @post.comments.blank? == false %>
+        <% if @post.comments.blank? == false %>
           <% @post.comments.each do |comment| %>
             <%= render "comments/comment", comment: comment %>
           <% end %>
         <% end %>
       </div>
-          <%= render "comments/form", post: @post, comment: @comment %>
+      <%= render "comments/form", post: @post, comment: @comment %>
     </div>
   </div>
-    <%= link_to "All post", root_path %>
+  <%= link_to "All post", root_path %>
 </div>

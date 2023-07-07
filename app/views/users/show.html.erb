@@ -1,15 +1,15 @@
-  
 <div>
   <div class="container">
     <div class="footer">
       <div>
-        <li><%= link_to "Back", root_path %></li>
+        <li><%= link_to "Back", :back %></li>
       </div>
       <div>
       </div>
       <% if @user == current_user %>
         <div>
           <li>
+            <%= debug destroy_user_session_path %>
             <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do%>
               <i class="fa-solid fa-gear"></i>
             <% end %>
@@ -30,56 +30,62 @@
           <% end %>
         </div>
         <div class="col-6 m-3 align-middle">
-          <div class="d-flex justify-content-between">
+          <div >
             <div>
               <h3><%= @user.username%></h3>
+              <h5><%= @user.location %></h5>
             </div>
             <div>
-              <% if @user == current_user %>
+              <% if current_user != @user %>
+                <% if current_user.follows_as_follower.exists?(following_id: @user.id) %>
+                  <%= button_to "Unfollow", user_follow_path(@user), method: :delete, class: "btn btn-primary" %>
+                <% else %>
+                  <%= button_to "Follow", user_follows_path(@user), method: :post, class: "btn btn-primary" %>
+                <% end %>
+              <% else %>
                 <%= link_to edit_user_path(@user) do %>
                   <i class="fa-solid fa-pen-to-square" style="color: #12aee2;"></i>
                 <% end %>
               <% end %>
-            </div>
           </div>
-          <h5><%= @user.location %></h5>
-          <p class="mb-0"><%= @user.bio %></p>
         </div>
-      </div>
-      <div class="d-flex justify-content-around align-items-center m-1">
-        <div class="d-flex justify-content-center text-center"><%= @posts.count %> <br>
-          posts</div>
-        <div class="d-flex justify-content-center text-center">10 <br>
-          followers</div>
-        <div class="d-flex justify-content-center text-center"> 20 <br>
-          following</div>
       </div>
     </div>
+    <p class="m-2"><%= @user.bio %></p>
+    <div class="d-flex justify-content-around align-items-center m-1">
+      <div class="d-flex justify-content-center text-center"><%= @posts.count %> <br>
+        posts</div>
+      <div class="d-flex justify-content-center text-center"><%= @followers.count %> <br>
+        followers</div>
+      <div class="d-flex justify-content-center text-center"> <%= @followings.count %> <br>
+        following</div>
+    </div>
+  </div>
 
-    <div class="bg-white rounded mt-3">
-      <div class="user-tabs d-flex justify-content-around text-center">
-        <a class="tab active" href="">
-          <i class="fa fa-th"></i>
-          Posts
-        </a>
-        <a class="tab" href="">
-          <i class="fa fa-bookmark"></i>
-          Saved
-        </a>
-      </div>
-      <div class="container">
-        <div class="row justify-content-md-center">
-          <% @posts.each do |post| %>
-            <div class="col-6">
-              <%= link_to post_path(post) do %>
-                <% post.images.each do |image| %>
-                  <%= cl_image_tag image.key, height: 150, width: 150, crop: :fill %>
-                <% end %>
+  <div class="bg-white rounded mt-3">
+    <div class="user-tabs d-flex justify-content-around text-center">
+      <a class="tab active" href="">
+        <i class="fa fa-th"></i>
+        Posts
+      </a>
+      <a class="tab" href="">
+        <i class="fa fa-bookmark"></i>
+        Saved
+      </a>
+    </div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <% @posts.each do |post| %>
+          <div class="col-6">
+            <%= link_to post_path(post) do %>
+              <% post.images.each do |image| %>
+                <%= cl_image_tag image.key, height: 150, width: 150, crop: :fill %>
               <% end %>
-            </div>
-          <% end %>
-        </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>
