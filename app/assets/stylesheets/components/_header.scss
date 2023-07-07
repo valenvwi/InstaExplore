@@ -7,9 +7,17 @@
 
 .header {
   background-color: rgb(255, 255, 255);
-  color: #fff;
+  color: #165eda;
   display: flex;
   justify-content: space-around;
   padding: 10px;
   border-bottom: lightgrey solid 1px;
+}
+
+.header a {
+  text-decoration: none;
+}
+
+.header a:hover {
+  text-decoration: underline;
 }
