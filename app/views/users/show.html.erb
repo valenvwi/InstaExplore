@@ -10,10 +10,11 @@
 
   <div class="user-profile">
     <div class="profile row">
+    <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex justify-content-start align-items-center mt-2">
         <div>
           <% if @user.avatar.key.nil? %>
-            <%= cl_image_tag("ghaqanlp91lehqirmt1u", class:"avatar-large m-3", alt:"Avatar") %>
+            <%= cl_image_tag("ltjpdg0x26bhr6ylcphyygo1fi88", class:"avatar-large m-3", alt:"Avatar") %>
           <% else %>
             <%= cl_image_tag @user.avatar.key, class:"avatar-large m-3", alt:"Avatar" %>
           <% end %>
@@ -24,21 +25,23 @@
               <h3><%= @user.username%></h3>
               <h5><%= @user.location %></h5>
             </div>
-            <div>
+
+            </div>
+          </div>
+          <div>
               <% if current_user != @user %>
                 <% if current_user.follows_as_follower.exists?(following_id: @user.id) %>
-                  <%= button_to "Unfollow", user_follow_path(@user), method: :delete, class: "btn btn-primary" %>
+                  <%= button_to "Unfollow", user_follow_path(@user), method: :delete, class: "btn-blue" %>
                 <% else %>
-                  <%= button_to "Follow", user_follows_path(@user), method: :post, class: "btn btn-primary" %>
+                  <%= button_to "Follow", user_follows_path(@user), method: :post, class: "btn-blue" %>
                 <% end %>
               <% else %>
                 <%= link_to edit_user_path(@user) do %>
-                  <i class="fa-solid fa-pen-to-square" style="color: #12aee2;"></i>
+                  <i class="fa-solid fa-pen-to-square" style="color: #165eda"></i>
                 <% end %>
               <% end %>
-            </div>
-          </div>
         </div>
+      </div>
       </div>
       <p class="m-2"><%= @user.bio %></p>
       <div class="d-flex justify-content-around align-items-center m-1">
