@@ -14,11 +14,16 @@
 
 body {
   background-color: white;
+  overflow: hidden;
 }
 
 .application-container {
   max-width: 1000px;
   margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 li {
@@ -37,9 +42,7 @@ li {
   display:flex;
   align-items: center;
   justify-content: space-between;
-  a{
-    padding-left: 15px;
-  }
+
   i.fa{
     font-size: 28px;
     color: #000000d4;
@@ -52,9 +55,6 @@ li {
   }
 }
 
-  p{
-    color: #999;
-  }
 
   .user-tabs{
     border-top: 1px solid #efefef;

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="postshow-container">
   <div class="header-container">
     <div class="header">
       <%= link_to root_path do%>
@@ -17,14 +17,14 @@
             <%= cl_image_tag @post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
           <% end %>
         </div>
-        <div>
+        <div class="user-text-info">
           <li><%= @post.user.username %></li>
         <% end %>
         <li><%= @post.location %></li>
       </div>
     </div>
     <div>
-      <% if current_user != @user && (current_user.follows_as_follower.exists?(following_id: @post.user.id) == false) %>
+      <% if current_user != @post.user && (current_user.follows_as_follower.exists?(following_id: @post.user.id) == false) %>
         <%= button_to "Follow", user_follows_path(@post.user), method: :post, class: "btn-blue" %>
       <% end %>
     </div>
@@ -45,6 +45,7 @@
     <i class="fa-regular fa-comment"></i>
     <%= pluralize @post.likes.count, "like" %>
   </div>
+  <div class="content-container">
   <li>
     <h5><%= @post.title %></h5>
   </li>
@@ -68,6 +69,7 @@
       </div>
       <%= render "comments/form", post: @post, comment: @comment %>
     </div>
+  </div>
   </div>
   <%= link_to "Back", :back %>
 </div>
