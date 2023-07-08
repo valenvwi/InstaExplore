@@ -26,7 +26,7 @@ class FollowsController < ApplicationController
   end
 
   def find_follow
-    @follow = Follow.find_by(follower_id: current_user.id)
+    @follow = Follow.find_by(following_id: @user.id, follower_id: current_user.id)
   end
 
 end
