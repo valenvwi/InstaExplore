@@ -47,35 +47,35 @@
       <%= pluralize @post.likes.count, "like" %>
     </div>
     <div class="d-flex justify-content-between">
-    <% if @post.user == current_user %>
-      <%= link_to edit_post_path(@post), class: "transparent" do %>
-        <i class="fa-solid fa-pen-to-square"></i>
+      <% if @post.user == current_user %>
+        <%= link_to edit_post_path(@post), class: "transparent" do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+        <%=  button_to delete_post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "transparent" do %>
+          <i class="fa-solid fa-trash-can"></i>
+        <% end %>
       <% end %>
-      <%=  button_to delete_post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "transparent" do %>
-        <i class="fa-solid fa-trash-can"></i>
-      <% end %>
-    <% end %>
     </div>
   </div>
   <div class="content-container">
-  <li>
-    <h5><%= @post.title %></h5>
-  </li>
-  <li>
-    <p><%= @post.description %></p>
-  </li>
-  <div>
-    <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
-      <div data-insert-in-list-target="items">
-        <% if @post.comments.blank? == false %>
-          <% @post.comments.each do |comment| %>
-            <%= render "comments/comment", comment: comment %>
+    <li>
+      <h5><%= @post.title %></h5>
+    </li>
+    <li>
+      <p><%= @post.description %></p>
+    </li>
+    <div>
+      <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+        <div data-insert-in-list-target="items">
+          <% if @post.comments.blank? == false %>
+            <% @post.comments.each do |comment| %>
+              <%= render "comments/comment", comment: comment %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <%= render "comments/form", post: @post, comment: @comment %>
       </div>
-      <%= render "comments/form", post: @post, comment: @comment %>
     </div>
-  </div>
   </div>
   <%= link_to "Back", :back %>
 </div>
