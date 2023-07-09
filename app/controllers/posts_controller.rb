@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  skip_after_action :verify_authorized, only: [:index, :show]
+  skip_after_action :verify_authorized, only: [:index, :show, :nearby]
   after_action :authorize_posts, only: %i[show new edit create update destroy]
 
   def index
     @posts = policy_scope(Post)
+  end
+
+  def nearby
+    @posts = policy_scope(Post).near(current_user.location, 100)
   end
 
   def show

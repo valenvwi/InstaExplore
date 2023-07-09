@@ -9,6 +9,9 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
   validates :bio, length: { maximum: 150 }
 
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
   has_one_attached :avatar
   belongs_to :like, optional: true
   has_many :comments

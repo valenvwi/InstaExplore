@@ -1,7 +1,3 @@
-<%# <p style="color: green">
-  <%= notice %>
-<%# </p> %>
-
 <% if user_signed_in? %>
   <div class="header-container">
     <div class="header">
@@ -9,10 +5,10 @@
         <li><%= link_to "Follow", root_path %></li>
       </div>
       <div>
-        <li class="bold-font"><%= link_to "Explore", root_path%></li>
+        <li><%= link_to "Explore", root_path%></li>
       </div>
       <div>
-        <li><%= link_to "Nearby", nearby_posts_path%></li>
+        <li class="bold-font"><%= link_to "Nearby", nearby_posts_path%></li>
       </div>
       <div>
         <li>

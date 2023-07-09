@@ -12,6 +12,10 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def nearby?
+    true
+  end
+
   def show?
     true
   end
