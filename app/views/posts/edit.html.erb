@@ -2,10 +2,11 @@
   <%= simple_form_for@post, html: { "data-turbo-frame": false } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-    <%= f.input :title, as: :file, label: "Title" %>
-  <%= f.input :description, label: "Description", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"}, label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
-  <%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
-  <div class="text-center">
+    <%= f.input :images, as: :file, label: "Add images", wrapper_html: { class: "m-2"}, input_html: { multiple: true }%>
+    <div class="text-center">
+    <%= f.input :title , label: "Title", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"}, label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+    <%= f.input :description, label: "Description", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+    <%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
     <%= f.button :submit, class: "btn btn-outline-primary", label: "Submit", id:"updatePostButton" %>
   </div>
   <% end %>

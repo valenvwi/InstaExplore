@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  skip_after_action :verify_authorized, only: [:index, :show, :nearby, :following]
+  skip_after_action :verify_authorized, only: [:index, :show, :nearby, :following, :search]
   after_action :authorize_posts, only: %i[show new edit create update destroy]
 
   def index
-    @posts = policy_scope(Post)
+    @posts = policy_scope(Post).order(created_at: :desc)
   end
 
   def following
@@ -16,10 +16,24 @@ class PostsController < ApplicationController
         @posts << post
       end
     end
+    @posts = @posts.sort_by(&:created_at).reverse
   end
 
   def nearby
-    @posts = policy_scope(Post).near(current_user.location, 100)
+    @posts = policy_scope(Post).near(current_user.location, 100).order(created_at: :desc)
+  end
+
+  def search
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        posts.title ILIKE :query
+        OR posts.description ILIKE :query
+        OR posts.location ILIKE :query
+      SQL
+      @posts = Post.where(sql_subquery, query: "%#{params[:query]}%").order(created_at: :desc)
+    else
+      @posts = []
+    end
   end
 
   def show

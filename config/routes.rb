@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       get :nearby
       get :following
+      get :search
     end
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
