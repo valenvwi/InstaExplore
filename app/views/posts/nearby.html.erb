@@ -1,32 +1,40 @@
 <% if user_signed_in? %>
-  <div class="header-container">
-    <div class="header">
-      <div>
-        <li><%= link_to "Follow", root_path %></li>
+  <div class="postindex-container">
+    <div class="header-container">
+      <div class="header">
+        <div>
+          <li><%= link_to "Following", following_posts_path %></li>
+        </div>
+        <div>
+          <li><%= link_to "Explore", root_path%></li>
+        </div>
+        <div>
+          <li class="bold-font"><%= link_to "Nearby", nearby_posts_path%></li>
+        </div>
+        <div>
+          <li>
+            <%= link_to user_path(current_user) do%>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </li>
+        </div>
       </div>
-      <div>
-        <li><%= link_to "Explore", root_path%></li>
-      </div>
-      <div>
-        <li class="bold-font"><%= link_to "Nearby", nearby_posts_path%></li>
-      </div>
-      <div>
-        <li>
-          <%= link_to user_path(current_user) do%>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-        </li>
-      </div>
+    </div>
+  <% else %>
+    <li class="footer-item">
+      <%= link_to "Login", new_user_session_path, class: "footer-link" %>
+    </li>
+  <% end %>
+
+  <div class="posts">
+    <% if @posts.nil? %>
+      <% @posts.each do |post| %>
+        <%= render "post", post: post  %>
+      <% end %>
     </div>
   </div>
 <% else %>
-  <li class="footer-item">
-    <%= link_to "Login", new_user_session_path, class: "footer-link" %>
-  </li>
+  <p>There are no posts near you.</p>
+</div>
 <% end %>
-
-<div class="posts">
-  <% @posts.each do |post| %>
-    <%= render "post", post: post  %>
-    <% end %>
-  </div>
+</div>

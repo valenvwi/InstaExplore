@@ -16,6 +16,10 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def following?
+    true
+  end
+
   def show?
     true
   end

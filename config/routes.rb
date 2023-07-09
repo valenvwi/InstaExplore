@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       get :nearby
+      get :following
     end
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
