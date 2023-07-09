@@ -9,9 +9,15 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     resources :follows, only: [:create, :destroy]
   end
+
   resources :posts do
+    collection do
+      get :nearby
+      get :following
+    end
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
   end
+
   delete "posts/:id", to: "posts#destroy", as: :delete_post
 end
