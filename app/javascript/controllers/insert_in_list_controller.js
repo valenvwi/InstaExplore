@@ -6,9 +6,7 @@ export default class extends Controller {
   static values = { position: String }
 
   connect() {
-    console.log(this.element)
-    console.log(this.itemsTarget)
-    console.log(this.formTarget)
+    console.log("hi from inset in list controller");
   }
 
   send(event) {
