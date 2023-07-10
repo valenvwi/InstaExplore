@@ -7,6 +7,8 @@ import { application } from "./application"
 import CommentController from "./comment_controller"
 application.register("comment", CommentController)
 
-
 import InsertInListController from "./insert_in_list_controller"
 application.register("insert-in-list", InsertInListController)
+
+import PlacesController from "./places_controller"
+application.register("places", PlacesController)

@@ -1,4 +1,4 @@
-<div class="postshow-container">
+<div class="postshow-container" data-controller="places">
   <%= simple_form_for@post, html: { "data-turbo-frame": false } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -6,7 +6,7 @@
     <div class="text-center">
     <%= f.input :title , label: "Title", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"}, label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
     <%= f.input :description, label: "Description", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
-    <%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+    <%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" ,data: {target: "places.input"}},  data: { action: "keydown->places#initializeAutocomplete"} %>
     <%= f.button :submit, class: "btn btn-outline-primary", label: "Submit", id:"updatePostButton" %>
   </div>
   <% end %>
