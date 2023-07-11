@@ -35,6 +35,28 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def notification
+    @user = current_user
+    if current_user
+      @notifications = current_user.notifications.order(created_at: :desc)
+      @unreadnotifications = []
+      @readnotifications = []
+      @notifications.each do |notification|
+        if notification.read?
+          @readnotifications << notification
+        else
+          @unreadnotifications << notification
+        end
+      end
+      if @unreadnotifications != []
+        @unreadnotifications.each do |notification|
+        notification.mark_as_read!
+        end
+      end
+    authorize @user
+    end
+  end
+
   private
 
   def set_user

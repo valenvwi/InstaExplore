@@ -1,0 +1,17 @@
+<div class="notification">
+  <% if user == "Someone" %>
+    <span class="noti-bold">Someone</span>
+  <% else %>
+    <%= link_to user_path(user), class:"text-decoration-none" do %>
+      <span class="noti-bold"><%= user.username %></span>
+    <% end %>
+  <% end %>
+  liked
+  <% if post == "your post" %>
+    <span>your post</span>
+  <% else %>
+    <%= link_to post_path(post), class:"text-decoration-none" do %>
+      <span class="noti-bold"><%= post.title %></span>
+    <% end %>
+  <% end %>
+</div>

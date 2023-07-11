@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy]
   end
 
+  get "users/:id/notifications", to: "users#notification", as: :notification
+
   resources :posts do
     collection do
       get :nearby

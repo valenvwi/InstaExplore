@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to post_path(@post) }
         format.json # Follow the classic Rails flow and look for a create.json view
       else
-        format.html { render "posts/show", status: :unprocessable_entity }
+        format.html { render partial: "comments/form", locals: { post: @post, comment: @comment }, status: :unprocessable_entity }
         format.json # Follow the classic Rails flow and look for a create.json view
       end
     end

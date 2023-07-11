@@ -20,6 +20,10 @@ class UserPolicy < ApplicationPolicy
     record == user
   end
 
+  def notification?
+    true
+  end
+
   def update?
     record == user
   end

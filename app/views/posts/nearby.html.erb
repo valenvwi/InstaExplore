@@ -27,7 +27,7 @@
   <% end %>
 
   <div class="posts">
-    <% if @posts.nil? == false %>
+    <% if @posts != [] %>
       <% @posts.each do |post| %>
         <%= render "post", post: post  %>
       <% end %>

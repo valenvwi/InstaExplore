@@ -27,8 +27,15 @@
 <% end %>
 
 <div class="posts">
-  <% @posts.each do |post| %>
-    <%= render "post", post: post  %>
+  <% if @posts != [] %>
+    <% @posts.each do |post| %>
+      <%= render "post", post: post  %>
     <% end %>
-  </div>
+
+
+<% else %>
+  <p>You have not followed anyone yet</p>
+
+<% end %>
+</div>
 </div>
