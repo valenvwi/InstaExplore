@@ -5,12 +5,14 @@ class LikesController < ApplicationController
   def index
     redirect_to post_path(@post)
   end
+
   def create
     @post.likes.create(user_id: current_user.id)
     redirect_to post_path(@post)
   end
 
   def destroy
+    # Notification.find_by(params[:message].id: @like.id).destroy
     @like.destroy
     redirect_to post_path(@post)
   end
@@ -28,5 +30,4 @@ class LikesController < ApplicationController
   def find_like
     @like = @post.likes.find_by(user_id: current_user.id)
   end
-
 end

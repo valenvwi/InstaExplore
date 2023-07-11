@@ -1,0 +1,16 @@
+<div>
+  <% if unread %>
+    <span>Unread</span>
+  <% end %>
+  <% if user == "Someone" %>
+    <span>Someone</span>
+  <% else %>
+    <span><%= link_to user.username, user_path(user) %></span>
+  <% end %>
+  liked
+  <% if post == "your post" %>
+    <span>your post</span>
+  <% else %>
+    <%= link_to post.title, post_path(post) %>
+  <% end %>
+</div>

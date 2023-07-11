@@ -21,6 +21,13 @@
           <% end %>
         </li>
       </div>
+      <div>
+        <li>
+          <%= link_to notification_path(current_user) do%>
+            noti
+          <% end %>
+        </li>
+      </div>
         <div>
           <li>
           <%= button_to destroy_user_session_path, method: :delete, class:"transparent" do %>

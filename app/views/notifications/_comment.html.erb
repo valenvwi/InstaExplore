@@ -1,0 +1,9 @@
+<div>
+  <% if unread %>
+    <span>Unread</span>
+  <% end %>
+  <span><%= link_to user.username, user_path(user) %></span>
+  commented on your post
+
+  <%= link_to post.title, post_path(post) %>
+</div>
