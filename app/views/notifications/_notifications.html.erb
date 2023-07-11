@@ -1,8 +1,10 @@
-  <div class="container">
-    <h6>Notifications</h6>
-    <%# <%= turbo_stream_from "notifications_#{user.id}" %>
-    <%# <%= turbo_frame_tag "notifications_#{user.id}" do %>
-      <% @notifications.each do |notification| %>
+
+<div class="container">
+  <h2 class="title">Notifications</h2>
+  <% if @unreadnotifications != [] %>
+  <div class="notification-container">
+  <h3>New</h3>
+    <% @unreadnotifications.each do |notification| %>
       <% if notification.type == "CommentNotification" %>
         <%= render "notifications/comment",
                     user: notification.to_notification.creator,
@@ -13,7 +15,39 @@
                     user: notification.to_notification.creator,
                     post: notification.to_notification.post,
                     unread: notification.unread? %>
-        <% end %>
+      <% else notification.type == "FollowNotification" %>
+        <%= render "notifications/follow",
+                    following: notification.to_notification.creator,
+                    unread: notification.unread? %>
       <% end %>
-    <%# <% end %>
+    <% end %>
   </div>
+  <% end %>
+  <% if @readnotifications != []%>
+    <div class="notification-container-noline">
+    <h3>Earlier</h3>
+    <% @readnotifications.each do |notification| %>
+      <% if notification.type == "CommentNotification" %>
+        <%= render "notifications/comment",
+                    user: notification.to_notification.creator,
+                    post: notification.to_notification.post,
+                    unread: notification.unread? %>
+      <% elsif notification.type == "LikeNotification" %>
+        <%= render "notifications/like",
+                    user: notification.to_notification.creator,
+                    post: notification.to_notification.post,
+                    unread: notification.unread? %>
+      <% else notification.type == "FollowNotification" %>
+        <%= render "notifications/follow",
+                    following: notification.to_notification.creator,
+                    unread: notification.unread? %>
+      <% end %>
+    <% end %>
+  </div>
+  <% end %>
+  <% if @notifications == [] %>
+    <div class="posts">
+      <h3>No notifications yet</h3>
+    </div>
+    <% end %>
+</div>

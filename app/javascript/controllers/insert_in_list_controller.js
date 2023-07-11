@@ -23,6 +23,7 @@ export default class extends Controller {
           this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
         }
         this.formTarget.outerHTML = data.form
+        window.location.reload();
       })
   }
 }
