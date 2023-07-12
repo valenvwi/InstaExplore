@@ -31,14 +31,15 @@
       <p>You have not set your location yet. Set your location <%= link_to "here",edit_user_path(current_user) %></p>
 
     <% else %>
-        <% if @posts != [] %>
-          <% @posts.each do |post| %>
-            <%= render "post", post: post  %>
-          <% end %>
-        </div>
-        <% else %>
-          <p>There are no posts near you.</p>
+      <% if @posts != [] %>
+        <% @posts.each do |post| %>
+          <%= render "post", post: post  %>
         <% end %>
-   <% end %>
+        <%= render "shared/pagy" %>
+      </div>
+    <% else %>
+      <p>There are no posts near you.</p>
+    <% end %>
+  <% end %>
 </div>
 </div>
