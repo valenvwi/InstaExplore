@@ -1,0 +1,30 @@
+.follow-column {
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.user-info-black {
+  color: black;
+  text-decoration: none;
+
+  :hover {
+    text-decoration: underline;
+  }
+}
+
+.follow-info-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  text-align: start;
+  margin: 20px 40px;
+}
+
+.follow-small-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 40px;
+  flex-grow: 1;
+}
