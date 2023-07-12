@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update ]
 
-  def index
-    @user = current_user
-    authorize @user
-  end
-
   def show
     @posts = Post.where(user: @user).order(created_at: :desc)
     @followings = Follow.all.where(follower_id: @user)
