@@ -1,13 +1,5 @@
 <div class="show-user-container">
-  <div class="header-container">
-    <div class="header">
-      <%= link_to root_path do%>
-        <h1><i class="fa-brands fa-wpexplorer" style="color: #165eda;"></i>
-          InstaExpore</h1>
-      <% end %>
-    </div>
-  </div>
-
+  <%= render "shared/topnavbar" %>
   <div class="user-profile">
     <div class="profile row">
       <div class="d-flex justify-content-between align-items-center">
@@ -20,13 +12,8 @@
             <% end %>
           </div>
           <div class="col-6 m-3 align-middle">
-            <div >
-              <div>
                 <h3><%= @user.username%></h3>
                 <h5><%= @user.location %></h5>
-              </div>
-
-            </div>
           </div>
           <div>
             <% if current_user != @user %>
@@ -63,16 +50,7 @@
     </div>
 
     <div class="bg-white rounded mt-3">
-      <div class="user-tabs d-flex justify-content-around text-center">
-        <a class="tab active" href="">
-          <i class="fa fa-th"></i>
-          Posts
-        </a>
-        <a class="tab" href="">
-          <i class="fa fa-bookmark"></i>
-          Saved
-        </a>
-      </div>
+      <div class="user-tabs text-center p-3"> All Posts</div>
       <div class="container">
         <% if @posts.count > 0 %>
           <div class="row justify-content-md-center">
@@ -87,7 +65,7 @@
         <% else %>
           <div class="row justify-content-md-center">
             <div class="col-6">
-              <p class="text-center">No posts yet</p>
+              <p class="text-center p-3">No posts yet</p>
             </div>
           </div>
         <% end %>

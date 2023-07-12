@@ -1,13 +1,6 @@
 <div class="show-user-container">
-  <div class="header-container">
-    <div class="header">
-      <%= link_to root_path do%>
-        <h1><i class="fa-brands fa-wpexplorer" style="color: #165eda;"></i>
-          InstaExpore</h1>
-      <% end %>
-    </div>
-  </div>
+  <%= render "shared/topnavbar" %>
   <div>
-      <%= render "notifications/notifications", user: current_user %>
-    </div>
+    <%= render "notifications/notifications", user: current_user %>
   </div>
+</div>

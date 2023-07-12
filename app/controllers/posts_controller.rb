@@ -4,23 +4,20 @@ class PostsController < ApplicationController
   skip_after_action :verify_authorized, only: [:index, :show, :nearby, :following, :search]
   after_action :authorize_posts, only: %i[show new edit create update destroy]
 
+
   def index
-    @posts = policy_scope(Post).order(created_at: :desc)
+    @pagy, @posts = pagy(policy_scope(Post).order(created_at: :desc), items: 10)
   end
 
   def following
-    @follows = Follow.where( follower_id: current_user.id)
-    @posts = []
-    @follows.each do |follow|
-      policy_scope(Post).where(user: follow.following_id).each do |post|
-        @posts << post
-      end
-    end
-    @posts = @posts.sort_by(&:created_at).reverse
+    @follows = Follow.where(follower_id: current_user.id)
+    @posts = Post.where(user_id: @follows.pluck(:following_id)).order(created_at: :desc)
+    @pagy, @posts = pagy(@posts, items: 10)
   end
 
   def nearby
     @posts = policy_scope(Post).near(current_user.location, 100).order(created_at: :desc)
+    @pagy, @posts = pagy(@posts, items: 10)
   end
 
   def search
@@ -31,13 +28,22 @@ class PostsController < ApplicationController
         OR posts.location ILIKE :query
       SQL
       @posts = Post.where(sql_subquery, query: "%#{params[:query]}%").order(created_at: :desc)
+      if @posts.any?
+        @pagy, @posts = pagy(@posts, items: 10)
+      else
+        @pagy = Pagy.new(count: 0, items: 10)
+      end
     else
       @posts = []
     end
   end
 
   def show
-    @comment = Comment.new
+    if user_signed_in?
+      @comment = Comment.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def new
