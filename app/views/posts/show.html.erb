@@ -1,12 +1,5 @@
 <div class="postshow-container" data-controller="comment">
-  <div class="header-container">
-    <div class="header">
-      <%= link_to root_path do%>
-        <h1><i class="fa-brands fa-wpexplorer" style="color: #165eda;"></i>
-          InstaExpore</h1>
-      <% end %>
-    </div>
-  </div>
+  <%= render "shared/topnavbar" %>
   <div class="user-section">
     <div class="user-info">
       <%= link_to user_path(@post.user), class:"text-decoration-none" do %>

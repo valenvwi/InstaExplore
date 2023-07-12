@@ -21,9 +21,9 @@
     </div>
   </div>
 <% else %>
-  <li class="footer-item">
-    <%= link_to "Login", new_user_session_path, class: "footer-link" %>
-  </li>
+  <div class="show-user-container">
+    <%= render "shared/topnavbar" %>
+    <div>
 <% end %>
 
 <div class="posts">

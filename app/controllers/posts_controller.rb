@@ -37,7 +37,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
+    if user_signed_in?
+      @comment = Comment.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def new
