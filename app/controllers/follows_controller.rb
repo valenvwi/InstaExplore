@@ -1,6 +1,17 @@
 class FollowsController < ApplicationController
-  before_action :find_user, :authorize_users
+  before_action :find_user
+  before_action :authorize_users, except: [:followings, :followers]
   before_action :find_follow, only: [:destroy]
+
+  def followings
+    @followings = Follow.where(follower_id: @user.id)
+    authorize @followings
+  end
+
+  def followers
+    @followers = Follow.where(following_id: @user.id)
+    authorize @followers
+  end
 
   def create
     @follow = Follow.new

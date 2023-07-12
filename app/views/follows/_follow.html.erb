@@ -1,0 +1,19 @@
+<div class="follow-info-container">
+      <%= link_to user_path(user), class:"user-info-black" do %>
+      <div>
+        <% if user.avatar.key.nil? %>
+          <%= cl_image_tag("ltjpdg0x26bhr6ylcphyygo1fi88", class:"avatar-medium", alt:"Avatar") %>
+        <% else %>
+          <%= cl_image_tag user.avatar.key, class:"avatar-medium", alt:"Avatar" %>
+        <% end %>
+      </div>
+      <div class="follow-small-info-container">
+        <div>
+          <h4><%= user.username%></h4>
+        </div>
+        <% end %>
+        <div>
+          <h5><%= user.location %></h5>
+        </div>
+      </div>
+    </div>
