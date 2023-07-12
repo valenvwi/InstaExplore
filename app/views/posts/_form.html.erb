@@ -1,18 +1,23 @@
-<%= form_for Post.new do |f| %>
-  <div class="form-group">
-    <%= f.text_field :title %>
-  </div>
-  <div class="form-group">
-    <%= f.text_field :description %>
-  </div>
-  <div class="form-group">
-    <%= f.text_field :location %>
-  </div>
-  <div class="form-group">
-    <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>
-  </div>
-  <br>
-  <div class="text-center">
-    <%= f.submit 'Create Post', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+<div class="postshow-container">
+    <%= simple_form_for@post, html: { "data-turbo-frame": false } do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <div class="form-inputs">
+        <div class= "form-row">
+          <%= f.input :images, as: :file, label: "Add images", wrapper_html: { class: "m-2"}, input_html: { optional: true}%>
+          <div class= "form-row">
+            <%= f.input :title , label: "Title", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"}, label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+          </div>
+          <div class= "form-row">
+            <%= f.input :description, label: "Description", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+          </div>
+          <div class= "form-row">
+            <%= f.input :location, label: "Location", wrapper_html: { class: "d-flex justify-content-between align-items-center m-2"} , label_html: { class: "w-25" }, input_html: { class: "w-75" }%>
+          </div>
+          <div class= "text-center p-3">
+            <%= f.button :submit, class: "btn btn-outline-primary", label: "Submit", id:"updatePostButton" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    </div>

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # before_validation :set_default_avatar, on: :create
   validates :first_name, :last_name, presence: true
   validates :username, presence: true, uniqueness: true
-  validates :bio, length: { maximum: 150 }
+  validates :bio, length: { maximum: 100 }
 
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?

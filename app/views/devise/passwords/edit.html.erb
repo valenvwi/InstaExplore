@@ -1,12 +1,7 @@
-<h2>Change your password</h2>
-
-
-<%= render "devise/shared/links" %>
-
 <div class="show-user-container">
   <%= render "shared/topnavbar" %>
   <div>
-  <div class="devise-title">Change your password</div>
+  <div class="form-title">Change your password</div>
     <div class="devise-content-container">
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
@@ -15,7 +10,7 @@
         <%= f.full_error :reset_password_token %>
 
         <div class="form-inputs">
-        <div class= "log-in-form">
+        <div class= "form-row">
           <%= f.input :password,
                       label: "New password",
                       required: true,
@@ -23,7 +18,7 @@
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
         </div>
-        <div class= "log-in-form">
+        <div class= "form-row">
           <%= f.input :password_confirmation,
                       label: "Confirm your new password",
                       required: true,
