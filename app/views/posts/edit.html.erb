@@ -1,4 +1,4 @@
-<div class="postshow-container" data-controller="places">
+<div class="postshow-container" data-controller="places" data-places-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>">
   <%= simple_form_for@post, html: { "data-turbo-frame": false } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>

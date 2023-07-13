@@ -3,28 +3,30 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="places"
 export default class extends Controller {
 
+  static values = { apiKey: String };
+
   static targets = ['input'];
 
+  googleApiInitialized = false;
   connect() {
-     console.log("hi from places controller");
-     this.loadGoogleMapsAPI().then(() => {
-      this.initializeAutocomplete();
-    });
+    console.log("hi from places controller");
+    this.loadGoogleMapsAPI();
   }
 
   loadGoogleMapsAPI() {
-    return new Promise((resolve, reject) => {
-      if (window.google && window.google.maps) {
-        resolve();
-      } else {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.googlemap_api_key}&libraries=places`;
-        script.defer = true;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      }
-    });
+    if (this.googleApiInitialized) return;
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${this.apiKeyValue}&libraries=places&callback=initMap`;
+    console.log(script.src);
+    script.async = true;
+
+    window.initMap = () => {
+      this.initializeAutocomplete();
+    };
+
+    document.head.appendChild(script);
+
+    this.googleApiInitialized = true;
   }
 
   initializeAutocomplete() {
@@ -33,7 +35,8 @@ export default class extends Controller {
       types: ['geocode'],
     };
 
-    new google.maps.places.Autocomplete(input, options).addListener('place_changed', () => {
+    const autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.addListener('place_changed', () => {
       const place = autocomplete.getPlace();
       console.log(place);
     });
