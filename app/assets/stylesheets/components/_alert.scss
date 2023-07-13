@@ -1,6 +1,17 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 54px;
+  right: 10px;
   z-index: 1000;
+  display: none;
+}
+
+.alert-info {
+  background-color: #165eda;
+  color:white;
+  border-radius: 5px;
+}
+
+.btn-close {
+  color:white;
 }

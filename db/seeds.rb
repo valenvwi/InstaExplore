@@ -14,7 +14,7 @@ num = 3
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.last_name,
     username: Faker::Internet.unique.username,
-    bio: Faker::TvShows::Simpsons.quote,
+    bio: Faker::Quote.famous_last_words,
     location: Faker::Address.city,
     email: "user#{num}@example.com",
     password: "123456"
@@ -35,6 +35,8 @@ puts "creating posts"
     location: Faker::Address.city,
     user: User.find_by(id: rand(1..7))
   )
-  post.images.attach(io: URI.open(FakePicture::Blog.preview), filename: "nes.png", content_type: "image/png")
+  2.times do
+    post.images.attach(io: URI.open(FakePicture::Blog.preview), filename: "nes.png", content_type: "image/png")
+  end
   post.save!
 end

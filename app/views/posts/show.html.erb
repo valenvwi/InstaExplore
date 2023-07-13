@@ -23,7 +23,7 @@
     </div>
   </div>
   <% if @post.images.count > 1 %>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-interval="false">
       <div class="carousel-inner">
         <% num = 0 %>
         <% @post.images.each do |image| %>
@@ -103,5 +103,4 @@
       </div>
     </div>
   </div>
-  <%= link_to "Back", :back %>
 </div>

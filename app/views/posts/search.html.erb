@@ -45,14 +45,18 @@
     </div>
 </div>
 
-<div class="posts">
-  <% @posts.each do |post| %>
-    <%= render "post", post: post  %>
-    <% end %>
-    <%if @pagy && @pagy.pages > 1  %>
-  <div class = "d-flex justify-content-center">
-    <div class="pag-bar mx-auto mt-4 pt-4"><%== pagy_bootstrap_nav(@pagy) %></div>
-  </div>
+  <div class="posts">
+<% if @posts.nil? || @posts == [] %>
+  <p>Try other keywords.</p>
+<% else %>
+    <% @posts.each do |post| %>
+      <%= render "post", post: post  %>
+      <% end %>
+      <%if @pagy && @pagy.pages > 1  %>
+    <div class = "d-flex justify-content-center">
+      <div class="pag-bar mx-auto mt-4 pt-4"><%== pagy_bootstrap_nav(@pagy) %></div>
+    </div>
+  <% end %>
 <% end %>
 
   </div>

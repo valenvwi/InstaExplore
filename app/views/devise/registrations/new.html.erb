@@ -1,9 +1,8 @@
 <div class="show-user-container">
   <%= render "shared/topnavbar" %>
   <div class="form-title">Sign up</div>
-  <div class="devise-content-container">
+  <div class="devise-content-container" data-controller="places" data-places-api-key-value="<%= ENV['GOOGLE_MAPS_API_KEY'] %>">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
 
       <div class="form-inputs">
         <div class= "form-row">
@@ -34,7 +33,7 @@
           <%= f.input :location,
                       required: false,
                       autofocus: true,
-                      input_html: { autocomplete: "location" }%>
+                      input_html: { autocomplete: "location", data: {target: "places.input"}},  data: { action: "keydown->places#initializeAutocomplete"}%>
         </div>
         <div class= "form-row">
           <%= f.input :password,

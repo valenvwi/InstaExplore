@@ -10,9 +10,31 @@
   text-decoration: none;
   color:black;
   text-align: center;
+}
 
-  .a {
+.user-small-info {
     text-decoration: none;
     color:black;
-  }
+}
+
+.bio-wrap {
+  margin: 10px 30px;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.profile-row {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.info-follow-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  flex-grow: 1;
+  flex-wrap:wrap;
 }
