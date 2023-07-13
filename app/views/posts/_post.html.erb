@@ -1,4 +1,4 @@
-<div class="post col-12 col-md-5">
+<div class="post col-12">
   <div class="d-flex justify-content-between align-items-center">
     <div class="user-info">
       <%= link_to user_path(post.user), class:"text-decoration-none" do %>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <%= link_to post_path(post) do %>
-    <%= cl_image_tag post.images.first.key, height: 200, width: 300, crop: :fill %>
+    <%= cl_image_tag post.images.first.key, class:"full-width-height", crop: :fill %>
   <% end %>
-  <li><%= post.title %></li>
+  <div class="post-content"><%= post.title %></div>
 </div>

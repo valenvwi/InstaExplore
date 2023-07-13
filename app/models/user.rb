@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   # before_validation :set_default_avatar, on: :create
   validates :first_name, :last_name, presence: true
-  validates :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, length:{ maximum: 18 }
   validates :bio, length: { maximum: 100 }
 
   geocoded_by :location

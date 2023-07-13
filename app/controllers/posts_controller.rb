@@ -7,6 +7,11 @@ class PostsController < ApplicationController
 
   def index
     @pagy, @posts = pagy(policy_scope(Post).order(created_at: :desc), items: 10)
+    if user_signed_in?
+      @comment = Comment.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def following

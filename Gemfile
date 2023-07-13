@@ -53,6 +53,7 @@ gem "sassc-rails"
 
 gem 'jquery-rails'
 
+gem "globalid", "~> 1.0.0"
 
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"

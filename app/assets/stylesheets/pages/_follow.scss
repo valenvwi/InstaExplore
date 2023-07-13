@@ -18,7 +18,7 @@
   justify-content: start;
   align-items: center;
   text-align: start;
-  margin: 20px 40px;
+  margin: 20px 30px;
 }
 
 .follow-small-info-container {
@@ -27,4 +27,8 @@
   align-items: center;
   margin: 0px 40px;
   flex-grow: 1;
+}
+
+.end-align {
+  text-align:end;
 }

@@ -23,7 +23,10 @@
   <% else %>
     <div class="show-user-container">
       <%= render "shared/topnavbar" %>
-      <div>
+    <div>
+    <div class="login-link">
+      <%= link_to "Login", new_user_session_path, class: "login-link" %>
+    </div>
       <% end %>
 
       <div class="posts">

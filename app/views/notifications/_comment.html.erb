@@ -1,7 +1,7 @@
 
 <div class="notification">
   <% if user == "Someone" %>
-    <span>Someone</span>
+    <span class="noti-bold">Someone</span>
   <% else %>
     <%= link_to user_path(user), class:"text-decoration-none" do  %>
       <span class="noti-bold"><%= user.username %></span>
