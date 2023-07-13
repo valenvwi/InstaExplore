@@ -27,14 +27,19 @@
   <% end %>
 
   <div class="posts">
-    <% if @posts.nil? == false %>
-      <% @posts.each do |post| %>
-        <%= render "post", post: post  %>
-      <% end %>
-    </div>
-  </div>
-<% else %>
-  <p>There are no posts near you.</p>
+    <% if current_user.location.nil? || current_user.location == "" %>
+      <p>You have not set your location yet. Set your location <%= link_to "here",edit_user_path(current_user) %></p>
+
+    <% else %>
+      <% if @posts != [] %>
+        <% @posts.each do |post| %>
+          <%= render "post", post: post  %>
+        <% end %>
+        <%= render "shared/pagy" %>
+      </div>
+    <% else %>
+      <p>There are no posts near you.</p>
+    <% end %>
+  <% end %>
 </div>
-<% end %>
 </div>

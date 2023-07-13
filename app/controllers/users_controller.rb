@@ -1,11 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update ]
 
-  def index
-    @user = current_user
-    authorize @user
-  end
-
   def show
     @posts = Post.where(user: @user).order(created_at: :desc)
     @followings = Follow.all.where(follower_id: @user)
@@ -33,6 +28,28 @@ class UsersController < ApplicationController
       end
     end
     authorize @user
+  end
+
+  def notification
+    @user = current_user
+    if current_user
+      @notifications = current_user.notifications.order(created_at: :desc)
+      @unreadnotifications = []
+      @readnotifications = []
+      @notifications.each do |notification|
+        if notification.read?
+          @readnotifications << notification
+        else
+          @unreadnotifications << notification
+        end
+      end
+      if @unreadnotifications != []
+        @unreadnotifications.each do |notification|
+        notification.mark_as_read!
+        end
+      end
+    authorize @user
+    end
   end
 
   private

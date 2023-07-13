@@ -1,34 +1,35 @@
 <% if user_signed_in? %>
-<div class="postindex-container">
-  <div class="header-container">
-    <div class="header">
-      <div>
-        <li><%= link_to "Following", following_posts_path %></li>
-      </div>
-      <div>
-        <li class="bold-font"><%= link_to "Explore", root_path%></li>
-      </div>
-      <div>
-        <li><%= link_to "Nearby", nearby_posts_path%></li>
-      </div>
-      <div>
-        <li>
-          <%= link_to search_posts_path do%>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-        </li>
+  <div class="postindex-container">
+    <div class="header-container">
+      <div class="header">
+        <div>
+          <li><%= link_to "Following", following_posts_path %></li>
+        </div>
+        <div>
+          <li class="bold-font"><%= link_to "Explore", root_path%></li>
+        </div>
+        <div>
+          <li><%= link_to "Nearby", nearby_posts_path%></li>
+        </div>
+        <div>
+          <li>
+            <%= link_to search_posts_path do%>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </li>
+        </div>
       </div>
     </div>
-  </div>
-<% else %>
-  <li class="footer-item">
-    <%= link_to "Login", new_user_session_path, class: "footer-link" %>
-  </li>
-<% end %>
+  <% else %>
+    <div class="show-user-container">
+      <%= render "shared/topnavbar" %>
+      <div>
+      <% end %>
 
-<div class="posts">
-  <% @posts.each do |post| %>
-    <%= render "post", post: post  %>
-    <% end %>
-  </div>
-</div>
+      <div class="posts">
+        <% @posts.each do |post| %>
+          <%= render "post", post: post  %>
+        <% end %>
+        <%= render "shared/pagy" %>
+      </div>
+    </div>

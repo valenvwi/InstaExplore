@@ -37,7 +37,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
+    record == user || record.likes.exists?(user_id: user.id)
   end
 
 end

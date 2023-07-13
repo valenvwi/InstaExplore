@@ -7,8 +7,15 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "posts#index"
   resources :users, only: [:show, :edit, :update] do
-    resources :follows, only: [:create, :destroy]
+    resources :follows, only: [:create, :destroy] do
+      collection do
+        get :followings
+        get :followers
+      end
+    end
   end
+
+  get "users/:id/notifications", to: "users#notification", as: :notification
 
   resources :posts do
     collection do

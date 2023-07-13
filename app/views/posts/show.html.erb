@@ -1,12 +1,5 @@
 <div class="postshow-container" data-controller="comment">
-  <div class="header-container">
-    <div class="header">
-      <%= link_to root_path do%>
-        <h1><i class="fa-brands fa-wpexplorer" style="color: #165eda;"></i>
-          InstaExpore</h1>
-      <% end %>
-    </div>
-  </div>
+  <%= render "shared/topnavbar" %>
   <div class="user-section">
     <div class="user-info">
       <%= link_to user_path(@post.user), class:"text-decoration-none" do %>
@@ -29,8 +22,37 @@
       <% end %>
     </div>
   </div>
-  <% @post.images.each do |image| %>
-    <%= cl_image_tag image.key, class:"post-img", crop: :fill %>
+  <% if @post.images.count > 1 %>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <% num = 0 %>
+        <% @post.images.each do |image| %>
+          <% if num == 0 %>
+            <div class="carousel-item active">
+              <%= cl_image_tag image.key, class:"post-img", crop: :fill %>
+              <% num +=1 %>
+            </div>
+          <% else %>
+            <div class="carousel-item">
+              <%= cl_image_tag image.key, class:"post-img", crop: :fill %>
+              <% num +=1 %>
+            </div>
+          <% end %>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <% @post.images.each do |image| %>
+      <%= cl_image_tag image.key, class:"post-img", crop: :fill %>
+    <% end %>
   <% end %>
   <div class="d-flex justify-content-between">
     <div class="d-flex align-items-center">
@@ -44,7 +66,7 @@
         <% end %>
       <% end %>
       <button class="transparent" data-action="click->comment#show">
-      <i class="fa-regular fa-comment"></i>
+        <i class="fa-regular fa-comment"></i>
       </button>
       <%= pluralize @post.likes.count, "like" %>
     </div>

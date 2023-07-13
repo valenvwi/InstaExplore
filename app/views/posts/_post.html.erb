@@ -19,9 +19,7 @@
     </div>
   </div>
   <%= link_to post_path(post) do %>
-    <% post.images.each do |image| %>
-      <%= cl_image_tag image.key, height: 200, width: 300, crop: :fill %>
-    <% end %>
+    <%= cl_image_tag post.images.first.key, height: 200, width: 300, crop: :fill %>
   <% end %>
   <li><%= post.title %></li>
 </div>

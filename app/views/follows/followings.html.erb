@@ -1,0 +1,24 @@
+<div class="show-user-container">
+  <div class="header-container">
+    <div class="header">
+      <%= link_to user_path(@user) do%>
+        <h1><i class="fa-brands fa-wpexplorer" style="color: #165eda;"></i>
+          <%= @user.username %></h1>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <div class="d-flex justify-content-around align-items-center mt-2" >
+      <%= link_to followers_user_follows_path(@user), class:"follow-column" do  %>
+        <div>Follower</div>
+      <% end %>
+      <%= link_to followings_user_follows_path(@user), class:"follow-column" do  %>
+        <div class="bold-font">Following</div>
+      <% end %>
+    </div>
+  <% @followings.each do |follow|%>
+    <% @followinguser = User.find_by(id: follow.following_id)  %>
+      <%= render "follow", user: @followinguser %>
+    <% end %>
+  </div>
+</div>

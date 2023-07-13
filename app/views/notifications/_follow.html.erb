@@ -1,0 +1,12 @@
+
+<div class="notification">
+  <% if following == "Someone" %>
+    <span>Someone</span>
+  <% else %>
+    <%= link_to user_path(following), class:"text-decoration-none" do %>
+      <span class="noti-bold"><%= following.username %></span>
+    <% end %>
+  <% end %>
+  followed you</span>
+
+</div>

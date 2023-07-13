@@ -2,3 +2,17 @@
   flex-grow: 1;
   margin: 10px 20px;
 }
+
+.user-small-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color:black;
+  text-align: center;
+
+  .a {
+    text-decoration: none;
+    color:black;
+  }
+}
