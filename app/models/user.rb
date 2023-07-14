@@ -25,6 +25,6 @@ class User < ApplicationRecord
   private
 
   # def set_default_avatar
-  #   self.avatar = "https://res.cloudinary.com/duq6yxlzy/image/upload/v1/development/ltjpdg0x26bhr6ylcphyygo1fi88"
+  #   self.avatar = "https://res.cloudinary.com/duq6yxlzy/image/upload/v1/development/166z4p5m09mvswlb7a6hxhbasosu"
   # end
 end
