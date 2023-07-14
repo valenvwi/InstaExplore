@@ -1,5 +1,5 @@
 class LikeNotification < Noticed::Base
-  deliver_by :action_cable
+  deliver_by :database
   # param :post
 
   def like

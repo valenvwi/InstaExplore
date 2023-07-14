@@ -1,6 +1,6 @@
 class CommentNotification < Noticed::Base
 
-  deliver_by :action_cable
+  deliver_by :database
 
   def comment
     params[:message]
