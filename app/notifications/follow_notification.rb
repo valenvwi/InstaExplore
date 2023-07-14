@@ -1,6 +1,6 @@
 class FollowNotification < Noticed::Base
 
-  deliver_by :database
+  deliver_by :action_cable
 
   def follow
     params[:message]
