@@ -9,7 +9,7 @@ puts "Done"
 
 puts "Creating fake users..."
 num = 3
-5.times do
+3.times do
   user = User.new(
     first_name: Faker::Name.unique.first_name,
     last_name: Faker::Name.last_name,
@@ -22,21 +22,21 @@ num = 3
   num += 1
   user.avatar.attach(io: URI.open(Faker::Avatar.image), filename: "nes.png", content_type: "image/png")
   user.save!
+
+  puts "Creating fake posts..."
+
+  3.times do
+    post = Post.new(
+      title: Faker::TvShows::FamilyGuy.quote,
+      description: Faker::TvShows::Friends.quote,
+      location: Faker::Address.city,
+      user: user
+    )
+      2.times do
+        post.images.attach(io: URI.open(FakePicture::Blog.preview), filename: "nes.png", content_type: "image/png")
+      end
+    post.save!
+  end
 end
 
 puts "Done"
-
-
-puts "creating posts"
-10.times do
-  post = Post.new(
-    title: Faker::TvShows::FamilyGuy.quote,
-    description: Faker::TvShows::Friends.quote,
-    location: Faker::Address.city,
-    user: User.find_by(id: rand(1..7))
-  )
-  2.times do
-    post.images.attach(io: URI.open(FakePicture::Blog.preview), filename: "nes.png", content_type: "image/png")
-  end
-  post.save!
-end
