@@ -3,8 +3,10 @@ require 'fake_picture'
 require "open-uri"
 
 puts "Creating users..."
-User.create(first_name: "Lai Fun", last_name: "Chu", username: "Laifunpig", bio: "Bababababaaa", location: "England", email:"user1@example.com", password:"123456")
-User.create(first_name: "Cris", last_name: "Baby", username: "iamyourbaby", bio: "Chill", location: "Zurich", email:"user2@example.com", password: "123456")
+user1 = User.create(first_name: "Lai Fun", last_name: "Chu", username: "Laifunpig", bio: "Bababababaaa", location: "England", email:"user1@example.com", password:"123456")
+user1.save!
+user2 = User.create(first_name: "Cris", last_name: "Baby", username: "iamyourbaby", bio: "Chill", location: "Zurich", email:"user2@example.com", password: "123456")
+user2.save!
 puts "Done"
 
 puts "Creating fake users..."
