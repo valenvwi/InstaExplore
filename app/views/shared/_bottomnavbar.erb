@@ -3,35 +3,35 @@
     <div class="footer">
       <div>
         <li><%= link_to root_path do%>
-            <i class="fa-solid fa-house" style="color: #165eda;"></i>
+            <i class="fa-solid fa-house icon"></i>
           <% end %>
         </li>
       </div>
       <div>
         <li>
           <%= link_to notification_path(current_user) do%>
-            <i class="fa-solid fa-bell" style="color: #165eda;"></i>
+            <i class="fa-solid fa-bell icon"></i>
           <% end %>
         </li>
       </div>
       <div>
         <li>
           <%= link_to new_post_path do%>
-            <i class="fa-solid fa-plus" style="color: #165eda;"></i>
+            <i class="fa-solid fa-plus icon"></i>
           <% end %>
         </li>
       </div>
       <div>
         <li>
           <%= link_to user_path(current_user) do%>
-            <i class="fa fa-user" style="color: #165eda;"></i>
+            <i class="fa fa-user icon"></i>
           <% end %>
         </li>
       </div>
       <div>
         <li>
           <%= button_to destroy_user_session_path, method: :delete, class:"transparent" do %>
-            <i class="fa-solid fa-right-from-bracket" style="color: #165eda;"></i>
+            <i class="fa-solid fa-right-from-bracket icon"></i>
           <% end %>
         </li>
       </div>
