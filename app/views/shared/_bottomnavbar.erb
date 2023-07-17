@@ -23,22 +23,18 @@
       </div>
       <div>
         <li>
-          <%= link_to user_path(current_user) do%>
-            <i class="fa fa-user icon"></i>
+          <%= button_to chatrooms_path, method: :get, class:"transparent" do %>
+            <i class="fa-solid fa-comments icon"></i></i>
           <% end %>
         </li>
       </div>
       <div>
         <li>
-          <%= button_to destroy_user_session_path, method: :delete, class:"transparent" do %>
-            <i class="fa-solid fa-right-from-bracket icon"></i>
+          <%= link_to user_path(current_user) do%>
+            <i class="fa fa-user icon"></i>
           <% end %>
         </li>
       </div>
     </div>
   </div>
-<%# <% else %>
-  <%# <li class="footer-item">
-    <%= link_to "Login", new_user_session_path, class: "footer-link" %>
-  <%# </li>  %>
 <% end %>

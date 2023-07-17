@@ -1,0 +1,16 @@
+<div class="show-user-container">
+Messages
+<% if @chatrooms == []%>
+  <p>You do not have any message yet.</p>
+<% else %>
+  <% @chatrooms.each do |chatroom| %>
+  <div>
+  <% if chatroom.owner == current_user %>
+    <%= link_to chatroom.guest.username, chatroom_path(chatroom) %>
+  <% else %>
+    <%= link_to chatroom.owner.username, chatroom_path(chatroom) %>
+  <% end %>
+    </div>
+  <% end %>
+<% end %>
+</div>
