@@ -2,6 +2,7 @@ class ChatroomsController < ApplicationController
   def index
     @chatrooms = policy_scope(Chatroom).where("owner_id = ? OR guest_id = ?", current_user.id, current_user.id)
     authorize @chatrooms
+    @chatrooms = @chatrooms.sort_by{ |chatroom| chatroom.messages.last.created_at }.reverse
   end
 
   def show
