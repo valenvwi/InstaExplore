@@ -3,14 +3,57 @@
   flex-direction: column;
   flex-grow: 1;
   margin: 10px 20px;
+  align-items: center;
 }
 
 .messages-container {
   flex-grow: 1;
   height:0;
   overflow:auto;
+  width: 95%;
 }
 
 .message-form {
+  width:100%;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
 
+.message-left-container {
+  display:flex;
+  flex-direction: row;
+  margin: 15px 50px 15px 0px;
+}
+
+.message-left-content {
+  display:flex;
+  align-items: center;
+  background-color:rgb(236, 234, 234);
+  border-radius: 10px;
+  padding: 10px;
+  overflow-wrap:anywhere;
+}
+
+.message-right-container {
+  display:flex;
+  flex-direction: row;
+  margin: 15px 0px 15px 50px;
+  justify-content: end;
+}
+
+.message-right-content {
+  display:flex;
+  align-items: center;
+  background-color: #165eda;
+  color:white;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-wrap:anywhere;
+}
+
+.fa-arrow-left {
+  position: fixed;
+  left: 30px;
+  top:30px;
+  font-size: 20px;
 }

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         end
       end
       @newchatroom = Chatroom.new if @chatroom == [] || @chatroom.nil?
-      end
+    end
     authorize @user
   end
 

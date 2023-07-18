@@ -1,5 +1,8 @@
 <div class="chatroom-container">
   <div class="header-container">
+    <%= link_to chatrooms_path, class:"text-decoration-none" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
     <div class="header">
       <h1>
         <% if @chatroom.owner == current_user %>
