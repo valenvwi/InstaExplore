@@ -5,10 +5,14 @@ class MessagesController < ApplicationController
     @message.chatroom = @chatroom
     @message.user = current_user
     if @message.save
-      redirect_to chatroom_path(@chatroom)
-    else
-      render "chatrooms/show", status: :unprocessable_entity
-    end
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        render_to_string(partial: "message", locals: { message: @message })
+    )
+    redirect_to chatroom_path(@chatroom)
+  else
+    redirect_to chatroom_path(@chatroom), alert: "Failed to create message"
+  end
     authorize @message
   end
 

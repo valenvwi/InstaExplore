@@ -28,11 +28,12 @@
       <%= link_to "Login", new_user_session_path, class: "login-link" %>
     </div>
       <% end %>
-
-      <div class="posts">
-        <% @posts.each do |post| %>
-          <%= render "post", post: post  %>
-        <% end %>
-        <%= render "shared/pagy" %>
+      <div class="posts-container">
+        <div class="posts">
+          <% @posts.each do |post| %>
+            <%= render "post", post: post  %>
+          <% end %>
+          <%= render "shared/pagy" %>
+        </div>
       </div>
     </div>
