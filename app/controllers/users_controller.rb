@@ -5,6 +5,18 @@ class UsersController < ApplicationController
     @posts = Post.where(user: @user).order(created_at: :desc)
     @followings = Follow.all.where(follower_id: @user)
     @followers = Follow.all.where(following_id: @user)
+    if @user != current_user
+      @chatroom = []
+      @chatroom1 = Chatroom.find_by(owner_id: current_user, guest_id:@user)
+      @chatroom2 = Chatroom.find_by(owner_id: @user, guest_id:current_user)
+      @chatrooms = [@chatroom1, @chatroom2]
+      @chatrooms.each do |chatroom|
+        if chatroom != nil
+          @chatroom = chatroom
+        end
+      end
+      @newchatroom = Chatroom.new if @chatroom == [] || @chatroom.nil?
+    end
     authorize @user
   end
 

@@ -1,0 +1,42 @@
+<div class="chatroom-container"data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id%>">
+  <div class="header-container">
+    <%= link_to chatrooms_path, class:"text-decoration-none" do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
+    <div class="header">
+      <h1>
+        <% if @chatroom.owner == current_user %>
+          <%= link_to user_path(@chatroom.guest) do%>
+            <%= @chatroom.guest.username %>
+          <% end %>
+        <% else %>
+          <%= link_to user_path(@chatroom.owner) do%>
+            <%= @chatroom.owner.username %>
+          <% end %>
+        <% end %>
+      </h1>
+    </div>
+  </div>
+
+  <div class="messages-container">
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message, current_user1: current_user %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="message-form">
+    <%= simple_form_for [@chatroom, @message],
+      html: {data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },class: "d-flex"} do |f|
+    %>
+    <%= f.input :content,
+        label: false,
+        placeholder: "Type a message",
+        wrapper_html: {class: "flex-grow-1"},
+        autocomplete: "off"
+      %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+  <% end %>
+</div>
+</div>

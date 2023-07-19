@@ -1,0 +1,50 @@
+<div class="chatroom-container">
+  <%= render "shared/topnavbar" %>
+  <div class="chatrooms">
+    <h2 class="title">Messages</h2>
+    <% if @chatrooms == []%>
+      <p>You do not have any message yet.</p>
+    <% else %>
+      <% @chatrooms.each do |chatroom| %>
+        <% if chatroom.owner == current_user %>
+          <div class="chatroom">
+            <div>
+              <%= link_to user_path(chatroom.guest), class:"text-decoration-none" do %>
+                <% if chatroom.guest.avatar.key.nil? %>
+                  <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-medium", alt:"Avatar") %>
+                <% else %>
+                  <%= cl_image_tag chatroom.guest.avatar.key, class:"avatar-medium", alt:"Avatar" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="chatroom-info">
+              <%= link_to chatroom_path(chatroom), class: "chatroom-content" do %>
+                <h3><%= chatroom.guest.username %></h3>
+                <p><%= chatroom.messages.last.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+              <% end %>
+            </div>
+          </div>
+        <% else %>
+          <div class="chatroom">
+            <div>
+              <%= link_to user_path(chatroom.owner), class:"text-decoration-none" do %>
+                <% if chatroom.owner.avatar.key.nil? %>
+                  <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-medium", alt:"Avatar") %>
+                <% else %>
+                  <%= cl_image_tag chatroom.owner.avatar.key, class:"avatar-medium", alt:"Avatar" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="chatroom-info">
+                    <%= link_to chatroom_path(chatroom), class: "chatroom-content" do %>
+              <h3><%= chatroom.owner.username %></h3>
+              <p><%= chatroom.messages.last.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+              <% end %>
+            </div>
+          </div>
+      </div>
+        <% end %>
+    <% end %>
+  <% end %>
+</div>
+</div>

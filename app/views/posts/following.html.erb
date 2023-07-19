@@ -26,14 +26,16 @@
     </li>
   <% end %>
 
-  <div class="posts">
-    <% if @posts != [] %>
-      <% @posts.each do |post| %>
-        <%= render "post", post: post  %>
+  <div class="posts-container">
+    <div class="posts">
+      <% if @posts != [] %>
+        <% @posts.each do |post| %>
+          <%= render "post", post: post  %>
+        <% end %>
+        <%= render "shared/pagy" %>
+      <% else %>
+        <p>You have not followed anyone yet</p>
       <% end %>
-      <%= render "shared/pagy" %>
-    <% else %>
-      <p>You have not followed anyone yet</p>
-    <% end %>
+    </div>
   </div>
 </div>

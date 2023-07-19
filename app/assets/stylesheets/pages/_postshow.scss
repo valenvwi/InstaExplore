@@ -3,16 +3,28 @@
   margin: 10px 20px;
 }
 
-.fa-heart, .fa-pen-to-square {
+.fa-heart {
   font-size: 24px;
   color: #000000d4;
   margin: 10px 0px 10px 5px;
 }
 
-.fa-comment, .fa-trash-can {
+.fa-pen-to-square {
   font-size: 24px;
   color: #000000d4;
-  margin: 10px
+  margin: 10px;
+}
+
+.fa-trash-can  {
+  font-size: 24px;
+  color: #000000d4;
+  margin: 10px 5px 10px 0px;
+}
+
+.fa-comment {
+  font-size: 24px;
+  color: #000000d4;
+  margin: 10px 5px;
 }
 
 
@@ -24,6 +36,7 @@
   color: black;
   font-size: 16px;
   font-weight: bold;
+  margin-right: 5px;
 }
 
 #comment-grey {
@@ -40,4 +53,8 @@
 
 .comment-form {
   display: none;
+}
+
+.post-description {
+  font-size: 16px;
 }

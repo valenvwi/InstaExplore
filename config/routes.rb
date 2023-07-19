@@ -28,4 +28,9 @@ Rails.application.routes.draw do
   end
 
   delete "posts/:id", to: "posts#destroy", as: :delete_post
+
+  post "chatrooms/:id", to: "chatrooms#create", as: :create_chatroom
+  resources :chatrooms, only: [:index, :show] do
+    resources :messages, only: :create
+  end
 end

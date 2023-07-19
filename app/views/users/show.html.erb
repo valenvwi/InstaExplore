@@ -21,10 +21,22 @@
             <% else %>
               <%= button_to "Follow", user_follows_path(@user), method: :post, class: "btn-blue" %>
             <% end %>
+            <% if @chatroom == [] || @chatroom.nil? %>
+              <%= button_to "New Message", create_chatroom_path, method: :post, class: "btn-blue-with-margin" %>
+            <% else %>
+              <%= button_to "Message", chatroom_path(@chatroom), method: :get, class: "btn-blue-with-margin" %>
+            <% end %>
           <% else %>
             <%= link_to edit_user_path(@user) do %>
               <i class="fa-solid fa-pen-to-square" style="color: #165eda"></i>
             <% end %>
+            <div>
+        <li>
+          <%= button_to destroy_user_session_path, method: :delete, class:"transparent" do %>
+            <i class="fa-solid fa-right-from-bracket"></i>
+          <% end %>
+        </li>
+      </div>
           <% end %>
         </div>
       </div>
@@ -71,5 +83,4 @@
       <% end %>
     </div>
   </div>
-</div>
 </div>

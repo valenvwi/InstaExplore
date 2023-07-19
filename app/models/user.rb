@@ -17,10 +17,13 @@ class User < ApplicationRecord
   belongs_to :like, optional: true
   has_many :comments, dependent: :destroy
 
-  has_many :follows_as_follower, foreign_key: :follower_id, class_name: 'Follow'
-  has_many :follows_as_following, foreign_key: :following_id, class_name: 'Follow'
+  has_many :follows_as_follower, foreign_key: :follower_id, class_name: 'Follow', dependent: :destroy
+  has_many :follows_as_following, foreign_key: :following_id, class_name: 'Follow', dependent: :destroy
 
   has_many :notifications, as: :recipient, dependent: :destroy
+
+  has_many :chatrooms_as_owner, class_name: 'Chatroom', foreign_key: :user_id, dependent: :destroy
+  has_many :chatrooms_as_guest, class_name: 'Chatroom', foreign_key: :user_id, dependent: :destroy
 
   private
 
