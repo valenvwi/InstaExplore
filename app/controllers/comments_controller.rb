@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
         format.json
       else
         format.html { render partial: "comments/form", locals: { post: @post, comment: @comment }, status: :unprocessable_entity }
-        format.json 
+        format.json
       end
     end
   end

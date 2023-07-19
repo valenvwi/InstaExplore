@@ -23,6 +23,8 @@ export default class extends Controller {
           this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item)
         }
         this.formTarget.outerHTML = data.form
+        // this.input = document.querySelector("#comment_content")
+        // this.input.value = ""
         window.location.reload();
       })
   }
