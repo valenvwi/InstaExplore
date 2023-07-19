@@ -1,4 +1,4 @@
-<div class="chatroom-container">
+<div class="chatroom-container"data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id%>">
   <div class="header-container">
     <%= link_to chatrooms_path, class:"text-decoration-none" do %>
       <i class="fa-solid fa-arrow-left"></i>
@@ -18,25 +18,23 @@
     </div>
   </div>
 
-  <div class="messages-container"
-    data-controller="chatroom-subscription"
-    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-
+  <div class="messages-container">
     <div class="messages" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
-        <%= render "messages/message", message: message %>
+        <%= render "messages/message", message: message, current_user1: current_user %>
       <% end %>
     </div>
   </div>
 
   <div class="message-form">
     <%= simple_form_for [@chatroom, @message],
-      html: {class: "d-flex"} do |f|
+      html: {data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },class: "d-flex"} do |f|
     %>
     <%= f.input :content,
         label: false,
         placeholder: "Type a message",
-        wrapper_html: {class: "flex-grow-1"}
+        wrapper_html: {class: "flex-grow-1"},
+        autocomplete: "off"
       %>
     <%= f.submit "Send", class: "btn btn-primary mb-3" %>
   <% end %>

@@ -14,8 +14,20 @@
         <% end %>
       </div>
     </div>
-    <div class="like-count-container">
-      <%= pluralize post.likes.count, "like" %>
+    <div class="time-container">
+      <% if (Time.now - post.created_at) / 2592000 > 1 %>
+        <%= post.created_at.strftime('%Y-%m-%d %H:%M') %>
+      <% elsif (Time.now - post.created_at) / 604800 > 1 %>
+        <%= pluralize(((Time.now - post.created_at) / 604800).to_i, "week") %> ago
+      <% elsif (Time.now - post.created_at) / 86400 > 1 %>
+        <%= pluralize(((Time.now - post.created_at) / 86400).to_i, "day") %> ago
+      <% elsif (Time.now - post.created_at) / 3600 > 1 %>
+        <%= pluralize(((Time.now - post.created_at) / 3600).to_i, "hour") %> ago
+      <% elsif (Time.now - post.created_at) / 60 > 1 %>
+        <%= pluralize(((Time.now - post.created_at) / 60).to_i, "minute") %> ago
+      <% else %>
+        Just now
+      <% end %>
     </div>
   </div>
   <%= link_to post_path(post) do %>

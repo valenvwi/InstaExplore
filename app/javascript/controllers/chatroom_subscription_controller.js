@@ -16,15 +16,19 @@ export default class extends Controller {
     console.log(
       `This is chatroom ${this.chatroomIdValue}.`
     );
+    this.input = document.querySelector("#message_content");
   }
 
-  #insertMessageAndScrollDown(data) {
+  insertMessageAndScrollDown(data) {
+    console.log(data, this.input);
     this.messagesTarget.insertAdjacentHTML("beforeend", data);
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
+    this.resetForm();
   }
 
   resetForm(event) {
-    event.target.reset();
+    console.log("reset form", this.input, event);
+    this.input.value = "";
   }
 
   disconnect() {

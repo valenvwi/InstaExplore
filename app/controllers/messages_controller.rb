@@ -4,18 +4,13 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
-    if @message.save
-
+    @message.save
       ChatroomChannel.broadcast_to(
         @chatroom,
-        render_to_string(partial: "message", locals: { message: @message, current_user: (@message.user == @chatroom.owner ? @chatroom.guest : @chatroom.owner) })
+        render_to_string(partial: "message", locals: { message: @message })
         )
-
-    redirect_to chatroom_path(@chatroom)
-  else
-    redirect_to chatroom_path(@chatroom), alert: "Failed to create message"
-  end
     authorize @message
+    # redirect_to chatroom_path(@chatroom)
   end
 
   private

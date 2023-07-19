@@ -86,7 +86,22 @@
       <h5><%= @post.title %></h5>
     </li>
     <li>
-      <p><%= @post.description %></p>
+      <h6 class="post-description"><%= @post.description %></h6>
+    </li>
+    <li>
+      <% if (Time.now - @post.created_at) / 2592000 > 1 %>
+        <h6 class="post-description"><%= @post.created_at.strftime('%Y-%m-%d %H:%M') %> </h6>
+      <% elsif (Time.now - @post.created_at) / 604800 > 1 %>
+        <h6 class="post-description"><%= pluralize(((Time.now - @post.created_at) / 604800).to_i, "week") %> ago</h6>
+      <% elsif (Time.now - @post.created_at) / 86400 > 1 %>
+        <h6 class="post-description"><%= pluralize(((Time.now - @post.created_at) / 86400).to_i, "day") %> ago </h6>
+      <% elsif (Time.now - @post.created_at) / 3600 > 1 %>
+        <h6 class="post-description"><%= pluralize(((Time.now - @post.created_at) / 3600).to_i, "hour") %> ago </h6>
+      <% elsif (Time.now - @post.created_at) / 60 > 1 %>
+        <h6 class="post-description"><%= pluralize(((Time.now - @post.created_at) / 60).to_i, "minute") %> ago </h6>
+      <% else %>
+       <h6 class="post-description"> Just now</h6>
+      <% end %>
     </li>
     <div>
       <div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">

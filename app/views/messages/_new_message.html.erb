@@ -1,5 +1,4 @@
-<div id="message-<%= message.id %>">
-    <div class="message-container">
+    <div class="message-left-container">
       <div>
       <%= link_to user_path(message.user), class:"text-decoration-none" do %>
         <% if message.user.avatar.key.nil? %>
@@ -9,8 +8,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="message-content">
+      <div class="message-left-content">
         <%= message.content %>
       </div>
     </div>
-</div>
