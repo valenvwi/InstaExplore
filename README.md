@@ -1,7 +1,7 @@
 # Project description
 #### InstaExplore is a mobile application designed to help newcomers discover their local area and connect with people in their vicinity. Inspired by popular social media platforms like Instagram, InstaExplore combines the power of geolocation and user-generated content to create an engaging and interactive experience. InstaExplore aims to make it easier for newcomers to connect with their local community and discover the unique aspects of their area. By bringing people together through shared experiences and visual storytelling, InstaExplore enhances the sense of belonging and encourages exploration, ultimately helping users feel more at home in their new surroundings.
 
-### [Check it out on Heroku](https://instaexplore-9b589f2c49e0.herokuapp.com/)
+### [Check it out on Heroku :arrow_forward:](https://instaexplore-9b589f2c49e0.herokuapp.com/)
 
 ### Functionality
 
@@ -18,9 +18,11 @@
 9. I can search for posts using keywords or location.
 10. I can view nearby posts.
 11. I can see the posts created by the users whom I follow.
+12. I can participate in real-time chat with other users through chatrooms privately.
 
 ## Tech-Stack
 ###### Framework: Ruby on Rails
 ###### Main language: Ruby, HTML, CSS, Javascript
 ###### Main Gem: Devise, Pundit, Stimulus, Geocoder, Noticed, Pagy, Fake_picture, Faker, Simple_form
 ###### API: Google Maps API, Cloudinary
+###### Additional Functionality: ActionCable, Redis
