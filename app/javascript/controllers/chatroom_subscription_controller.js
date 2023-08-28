@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 import { createConsumer } from "@rails/actioncable";
 
 export default class extends Controller {
@@ -10,22 +10,22 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       {
         received: (data) =>
-          this.messagesTarget.insertAdjacentHTML("beforeend", data),
+          this.insertMessageAndScrollDown(data),
       }
     );
-    console.log(
-      `This is chatroom ${this.chatroomIdValue}.`
-    );
+    console.log(`This is chatroom ZZZ2 ${this.chatroomIdValue}.`);
+    this.messagesTarget.lastElementChild.scrollIntoView();
     this.input = document.querySelector("#message_content");
   }
 
   insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data);
-    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
+    console.log(this.messagesTarget)
+    this.messagesTarget.lastElementChild.scrollIntoView();
+    this.resetForm();
   }
 
-  resetForm(event) {
-    console.log("reset form", this.input, event);
+  resetForm() {
     this.input.value = "";
   }
 

@@ -27,19 +27,22 @@
   <% end %>
 
   <div class="posts-container">
-    <div class="posts">
       <% if current_user.location.nil? || current_user.location == "" %>
-        <p>You have not set your location yet. Set your location <%= link_to "here",edit_user_path(current_user) %></p>
+        <div class="notice-middle">
+          <p>You have not set your location yet. Set your location <%= link_to "here",edit_user_path(current_user) %></p>
+        </div>
       <% else %>
         <% if @posts != [] %>
+      <div class="posts">
           <% @posts.each do |post| %>
             <%= render "post", post: post  %>
           <% end %>
           <%= render "shared/pagy" %>
-        </div>
+      </div>
       <% else %>
-        <p>There are no posts near you.</p>
-    </div>
+        <div class="notice-middle">
+          <p>There are no posts near you.</p>
+       </div>
       <% end %>
     <% end %>
   </div>

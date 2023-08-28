@@ -1,6 +1,6 @@
 <div id="message-<%= message.id %>">
-    <div class="message-container">
-      <div>
+    <div class="message-container cont-<%=message.user.id%>">
+      <div class="avatar-<%=message.user.id%>">
       <%= link_to user_path(message.user), class:"text-decoration-none" do %>
         <% if message.user.avatar.key.nil? %>
             <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-xs", alt:"Avatar") %>
@@ -9,7 +9,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="message-content">
+      <div class="message-content msg-<%=message.user.id%>">
         <%= message.content %>
       </div>
     </div>

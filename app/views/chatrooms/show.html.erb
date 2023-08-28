@@ -21,7 +21,7 @@
   <div class="messages-container">
     <div class="messages" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
-        <%= render "messages/message", message: message, current_user1: current_user %>
+        <%= render "messages/message", message: message, user: current_user %>
       <% end %>
     </div>
   </div>

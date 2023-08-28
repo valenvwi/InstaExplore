@@ -27,15 +27,17 @@
   <% end %>
 
   <div class="posts-container">
-    <div class="posts">
-      <% if @posts != [] %>
+    <% if @posts != [] %>
+      <div class="posts">
         <% @posts.each do |post| %>
           <%= render "post", post: post  %>
         <% end %>
         <%= render "shared/pagy" %>
+      </div>
       <% else %>
+      <div class="notice-middle">
         <p>You have not followed anyone yet</p>
-      <% end %>
     </div>
+      <% end %>
   </div>
 </div>
