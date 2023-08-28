@@ -11,7 +11,9 @@
   height:0;
   overflow:auto;
   width: 95%;
+  margin-top: 10px;
 }
+
 
 .message-form {
   width:100%;
@@ -27,6 +29,7 @@
   font-size: 18px;
 }
 
+
 .message-content {
   display:flex;
   align-items: center;
@@ -35,6 +38,16 @@
   padding: 10px;
   overflow-wrap:anywhere;
 }
+
+// .message-content-right {
+//   display:flex;
+//   align-items: center;
+//   background-color: blue;
+//   color:white;
+//   border-radius: 10px;
+//   padding: 10px;
+//   overflow-wrap:anywhere;
+// }
 
 
 .fa-arrow-left {

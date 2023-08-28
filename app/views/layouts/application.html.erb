@@ -10,6 +10,22 @@
     <%# <script src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY]}&libraries=places&callback=initMap"></script> %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+      <%= ".msg-#{current_user&.id}" %> {
+      background-color: blue; !important;
+      color: white; !important;
+      display:flex;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+      display: flex;
+        justify-content: flex-end;
+        margin: 15px 0px !important;
+      }
+      <%= ".avatar-#{current_user&.id}" %> {
+      display: none;
+      }
+    </style>
+
   </head>
 
   <body>
