@@ -11,7 +11,7 @@
             <div>
               <%= link_to user_path(chatroom.guest), class:"text-decoration-none" do %>
                 <% if chatroom.guest.avatar.key.nil? %>
-                  <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-medium", alt:"Avatar") %>
+                  <%= cl_image_tag("ltjpdg0x26bhr6ylcphyygo1fi88", class:"avatar-medium", alt:"Avatar") %>
                 <% else %>
                   <%= cl_image_tag chatroom.guest.avatar.key, class:"avatar-medium", alt:"Avatar" %>
                 <% end %>
@@ -29,7 +29,7 @@
             <div>
               <%= link_to user_path(chatroom.owner), class:"text-decoration-none" do %>
                 <% if chatroom.owner.avatar.key.nil? %>
-                  <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-medium", alt:"Avatar") %>
+                  <%= cl_image_tag("ltjpdg0x26bhr6ylcphyygo1fi88", class:"avatar-medium", alt:"Avatar") %>
                 <% else %>
                   <%= cl_image_tag chatroom.owner.avatar.key, class:"avatar-medium", alt:"Avatar" %>
                 <% end %>

@@ -3,7 +3,7 @@
       <div class="avatar-<%=message.user.id%>">
       <%= link_to user_path(message.user), class:"text-decoration-none" do %>
         <% if message.user.avatar.key.nil? %>
-            <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-xs", alt:"Avatar") %>
+            <%= cl_image_tag("ltjpdg0x26bhr6ylcphyygo1fi88", class:"avatar-xs", alt:"Avatar") %>
           <% else %>
             <%= cl_image_tag message.user.avatar.key, class:"avatar-xs", alt:"Avatar" %>
           <% end %>

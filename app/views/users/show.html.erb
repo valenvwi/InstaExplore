@@ -4,35 +4,48 @@
     <div class="profile-row">
       <div>
         <% if @user.avatar.key.nil? %>
-          <%= cl_image_tag("166z4p5m09mvswlb7a6hxhbasosu", class:"avatar-large m-3", alt:"Avatar") %>
+          <%= cl_image_tag(
+            "ltjpdg0x26bhr6ylcphyygo1fi88",
+            class: "avatar-large m-3",
+            alt: "Avatar"
+          ) %>
         <% else %>
-          <%= cl_image_tag @user.avatar.key, class:"avatar-large m-3", alt:"Avatar" %>
+          <%= cl_image_tag @user.avatar.key, class: "avatar-large m-3", alt: "Avatar" %>
         <% end %>
       </div>
       <div class="info-follow-container">
         <div>
-          <h3><%= @user.username%></h3>
+          <h3><%= @user.username %></h3>
           <h5><%= @user.location %></h5>
         </div>
         <div>
           <% if current_user != @user %>
             <% if current_user.follows_as_follower.exists?(following_id: @user.id) %>
-              <%= button_to "Unfollow", user_follow_path(@user), method: :delete, class: "btn-blue" %>
+              <%= button_to "Unfollow",
+              user_follow_path(@user),
+              method: :delete,
+              class: "btn-blue" %>
             <% else %>
               <%= button_to "Follow", user_follows_path(@user), method: :post, class: "btn-blue" %>
             <% end %>
             <% if @chatroom == [] || @chatroom.nil? %>
-              <%= button_to "New Message", create_chatroom_path, method: :post, class: "btn-blue-with-margin" %>
+              <%= button_to "New Message",
+              create_chatroom_path,
+              method: :post,
+              class: "btn-blue-with-margin" %>
             <% else %>
-              <%= button_to "Message", chatroom_path(@chatroom), method: :get, class: "btn-blue-with-margin" %>
+              <%= button_to "Message",
+              chatroom_path(@chatroom),
+              method: :get,
+              class: "btn-blue-with-margin" %>
             <% end %>
           <% else %>
             <%= link_to edit_user_path(@user) do %>
               <i class="fa-solid fa-pen-to-square" style="color: #165eda"></i>
             <% end %>
-          <%= button_to destroy_user_session_path, method: :delete, class:"transparent" do %>
-            <i class="fa-solid fa-right-from-bracket"></i>
-          <% end %>
+            <%= button_to destroy_user_session_path, method: :delete, class:"transparent" do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -40,17 +53,20 @@
     <p class="bio-wrap"><%= @user.bio %></p>
     <div class="d-flex justify-content-around align-items-center m-1">
       <div class="user-small-info-container">
-        <%= @posts.count %> <br>
+        <%= @posts.count %>
+        <br>
         posts</div>
       <div class="user-small-info-container">
-          <%= link_to followers_user_follows_path(@user), class:"user-small-info" do  %>
-            <%= @followers.count %> <br>
-            <%= "follower".pluralize(@followers.count)  %>
-          <% end %>
+        <%= link_to followers_user_follows_path(@user), class:"user-small-info" do %>
+          <%= @followers.count %>
+          <br>
+          <%= "follower".pluralize(@followers.count) %>
+        <% end %>
       </div>
       <div class="user-small-info-container">
         <%= link_to followings_user_follows_path(@user), class:"user-small-info" do %>
-          <%= @followings.count %> <br>
+          <%= @followings.count %>
+          <br>
           following
         <% end %>
       </div>
@@ -58,14 +74,15 @@
   </div>
 
   <div class="bg-white rounded mt-3">
-    <div class="user-tabs text-center p-3"> All Posts</div>
+    <div class="user-tabs text-center p-3">
+      All Posts</div>
     <div>
       <% if @posts.count > 0 %>
         <div class="row justify-content-md-left mx-1">
           <% @posts.each do |post| %>
             <div class="col-4">
               <%= link_to post_path(post) do %>
-                <%= cl_image_tag post.images.first.key, class:"full-width" , crop: :lfill %>
+                <%= cl_image_tag post.images.first.key, class: "full-width", crop: :lfill %>
               <% end %>
             </div>
           <% end %>

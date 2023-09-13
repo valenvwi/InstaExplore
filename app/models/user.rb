@@ -25,9 +25,4 @@ class User < ApplicationRecord
   has_many :chatrooms_as_owner, class_name: 'Chatroom', foreign_key: :user_id, dependent: :destroy
   has_many :chatrooms_as_guest, class_name: 'Chatroom', foreign_key: :user_id, dependent: :destroy
 
-  private
-
-  # def set_default_avatar
-  #   self.avatar = "https://res.cloudinary.com/duq6yxlzy/image/upload/v1/development/166z4p5m09mvswlb7a6hxhbasosu"
-  # end
 end
