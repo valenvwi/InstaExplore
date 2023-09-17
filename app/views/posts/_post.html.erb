@@ -2,13 +2,11 @@
   <div class="d-flex justify-content-between align-items-center">
     <div class="user-info">
       <%= link_to user_path(post.user), class:"text-decoration-none" do %>
-        <div>
-          <% if post.user.avatar.key.nil? %>
-            <%= cl_image_tag("2h4bwphyx2eqvlg6mtkkai2tnt4q", class:"avatar my-2", alt:"Avatar") %>
-          <% else %>
-            <%= cl_image_tag post.user.avatar.key, class:"avatar my-2 mx-2", alt:"Avatar" %>
-          <% end %>
-        </div>
+        <% if post.user.avatar.key.nil? %>
+          <%= cl_image_tag("2h4bwphyx2eqvlg6mtkkai2tnt4q", class:"avatar my-2", alt:"Avatar") %>
+        <% else %>
+          <%= cl_image_tag post.user.avatar.key, class:"avatar my-2 mx-2", alt:"Avatar" %>
+        <% end %>
         <div class="mx-2">
           <li><%= post.user.username %></li>
         <% end %>

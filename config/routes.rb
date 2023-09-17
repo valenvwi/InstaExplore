@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  # root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
   root to: "posts#index"
-  resources :users, only: [:show, :edit, :update] do
-    resources :follows, only: [:create, :destroy] do
+  resources :users, only: %i[show edit update] do
+    resources :follows, only: %i[create destroy] do
       collection do
         get :followings
         get :followers
@@ -23,14 +18,14 @@ Rails.application.routes.draw do
       get :following
       get :search
     end
-    resources :likes, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+    resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy]
   end
 
   delete "posts/:id", to: "posts#destroy", as: :delete_post
 
   post "chatrooms/:id", to: "chatrooms#create", as: :create_chatroom
-  resources :chatrooms, only: [:index, :show] do
+  resources :chatrooms, only: %i[index show] do
     resources :messages, only: :create
   end
 end

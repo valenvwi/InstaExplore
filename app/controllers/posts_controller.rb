@@ -6,11 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @pagy, @posts = pagy(policy_scope(Post).order(created_at: :desc), items: 10)
-    if user_signed_in?
-      @comment = Comment.new
-    else
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
   def following
@@ -32,11 +28,7 @@ class PostsController < ApplicationController
         OR posts.location ILIKE :query
       SQL
       @posts = Post.where(sql_subquery, query: "%#{params[:query]}%").order(created_at: :desc)
-      if @posts.any?
-        @pagy, @posts = pagy(@posts, items: 10)
-      else
-        @pagy = Pagy.new(count: 0, items: 10)
-      end
+      @pagy, @posts = pagy(@posts, items: 10) if @posts.any?
     else
       @posts = []
     end
