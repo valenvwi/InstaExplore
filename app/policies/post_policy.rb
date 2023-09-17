@@ -13,6 +13,10 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    record.user_id == user.id
+  end
+
   def following?
     true
   end
@@ -30,11 +34,10 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user_id == user.id
   end
 
   def destroy?
-    true
+    record.user_id == user.id
   end
-
 end

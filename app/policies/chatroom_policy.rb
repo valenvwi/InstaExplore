@@ -10,12 +10,10 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    # record == user
-    true
+    record.owner_id == user.id || record.guest_id == user.id
   end
 
   def create?
     true
   end
-
 end

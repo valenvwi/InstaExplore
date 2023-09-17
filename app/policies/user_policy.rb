@@ -1,8 +1,8 @@
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
-  def resolve
-    scope.all
-  end
+    def resolve
+      scope.all
+    end
   end
 
   def show?
@@ -28,5 +28,4 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     true
   end
-
 end
