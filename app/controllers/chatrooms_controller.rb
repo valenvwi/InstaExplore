@@ -10,7 +10,7 @@ class ChatroomsController < ApplicationController
         @valid_chatrooms.push(chatroom)
       end
     end
-    @chatrooms = @valid_chatrooms.sort_by{ |chatroom| chatroom.messages.last.created_at }.reverse
+    @chatrooms = @valid_chatrooms.sort_by { |chatroom| chatroom.messages.last.created_at }.reverse
   end
 
   def show
@@ -30,5 +30,4 @@ class ChatroomsController < ApplicationController
     redirect_to chatroom_path(@chatroom)
     authorize @user
   end
-
 end

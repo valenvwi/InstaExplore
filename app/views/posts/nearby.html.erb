@@ -1,48 +1,34 @@
-<% if user_signed_in? %>
-  <div class="postindex-container">
-    <div class="header-container">
-      <div class="header">
-        <div>
-          <li><%= link_to "Following", following_posts_path %></li>
-        </div>
-        <div>
-          <li><%= link_to "Explore", root_path%></li>
-        </div>
-        <div>
-          <li class="bold-font"><%= link_to "Nearby", nearby_posts_path%></li>
-        </div>
-        <div>
-          <li>
-            <%= link_to search_posts_path do%>
-              <i class="fa-solid fa-magnifying-glass icon"></i>
-            <% end %>
-          </li>
-        </div>
-      </div>
+<div class="postindex-container">
+  <div class="header-container">
+    <div class="header">
+      <li><%= link_to "Following", following_posts_path %></li>
+      <li><%= link_to "Explore", root_path%></li>
+      <li class="bold-font"><%= link_to "Nearby", nearby_posts_path%></li>
+      <li>
+        <%= link_to search_posts_path do%>
+          <i class="fa-solid fa-magnifying-glass icon"></i>
+        <% end %>
+      </li>
     </div>
-  <% else %>
-    <li class="footer-item">
-      <%= link_to "Login", new_user_session_path, class: "footer-link" %>
-    </li>
-  <% end %>
+  </div>
 
   <div class="posts-container">
-      <% if current_user.location.nil? || current_user.location == "" %>
-        <div class="notice-middle">
-          <p>You have not set your location yet. Set your location <%= link_to "here",edit_user_path(current_user) %></p>
-        </div>
-      <% else %>
-        <% if @posts != [] %>
-      <div class="posts">
-          <% @posts.each do |post| %>
-            <%= render "post", post: post  %>
-          <% end %>
-          <%= render "shared/pagy" %>
+    <% if current_user.location.nil? || current_user.location == "" %>
+      <div class="notice-middle">
+        <p>You have not set your location yet. Set your location <%= link_to "here",edit_user_path(current_user) %></p>
       </div>
+    <% else %>
+      <% if @posts != [] %>
+        <div class="posts">
+            <% @posts.each do |post| %>
+              <%= render "post", post: post  %>
+            <% end %>
+            <%= render "shared/pagy" %>
+        </div>
       <% else %>
         <div class="notice-middle">
           <p>There are no posts near you.</p>
-       </div>
+        </div>
       <% end %>
     <% end %>
   </div>

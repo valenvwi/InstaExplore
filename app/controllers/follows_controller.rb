@@ -1,6 +1,6 @@
 class FollowsController < ApplicationController
   before_action :find_user
-  before_action :authorize_users, except: [:followings, :followers]
+  before_action :authorize_users, except: %i[followings followers]
   before_action :find_follow, only: [:destroy]
 
   def followings
@@ -39,5 +39,4 @@ class FollowsController < ApplicationController
   def find_follow
     @follow = Follow.find_by(following_id: @user.id, follower_id: current_user.id)
   end
-
 end

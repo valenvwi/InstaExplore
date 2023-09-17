@@ -1,5 +1,4 @@
 class FollowNotification < Noticed::Base
-
   deliver_by :database
 
   def follow
@@ -13,5 +12,4 @@ class FollowNotification < Noticed::Base
   def following
     follow.nil? ? "you" : follow.following
   end
-
 end

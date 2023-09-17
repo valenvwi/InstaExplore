@@ -9,11 +9,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html { redirect_to post_path(@post) }
-        format.json
       else
         format.html { render partial: "comments/form", locals: { post: @post, comment: @comment }, status: :unprocessable_entity }
-        format.json
       end
+      format.json
     end
   end
 

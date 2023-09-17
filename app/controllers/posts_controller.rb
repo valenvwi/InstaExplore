@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  skip_after_action :verify_authorized, only: [:index, :show, :nearby, :following, :search]
+  before_action :set_post, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_after_action :verify_authorized, only: %i[index show nearby following search]
   after_action :authorize_posts, only: %i[show new edit create update destroy]
-
 
   def index
     @pagy, @posts = pagy(policy_scope(Post).order(created_at: :desc), items: 10)
@@ -83,7 +82,6 @@ class PostsController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @post.destroy

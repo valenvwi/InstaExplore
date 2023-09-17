@@ -1,5 +1,4 @@
 class CommentNotification < Noticed::Base
-
   deliver_by :database
 
   def comment
