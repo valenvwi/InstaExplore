@@ -2,17 +2,15 @@
   <%= render "shared/topnavbar" %>
   <div class="user-profile">
     <div class="profile-row">
-      <div>
-        <% if @user.avatar.key.nil? %>
-          <%= cl_image_tag(
-            "2h4bwphyx2eqvlg6mtkkai2tnt4q",
-            class: "avatar-large m-3",
-            alt: "Avatar"
-          ) %>
-        <% else %>
-          <%= cl_image_tag @user.avatar.key, class: "avatar-large m-3", alt: "Avatar" %>
-        <% end %>
-      </div>
+      <% if @user.avatar.key.nil? %>
+        <%= cl_image_tag(
+          "2h4bwphyx2eqvlg6mtkkai2tnt4q",
+          class: "avatar-large m-3",
+          alt: "Avatar"
+        ) %>
+      <% else %>
+        <%= cl_image_tag @user.avatar.key, class: "avatar-large m-3", alt: "Avatar" %>
+      <% end %>
       <div class="info-follow-container">
         <div>
           <h3><%= @user.username %></h3>
