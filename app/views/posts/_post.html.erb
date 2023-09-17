@@ -4,19 +4,19 @@
       <%= link_to user_path(post.user), class:"text-decoration-none" do %>
         <div>
           <% if post.user.avatar.key.nil? %>
-            <%= cl_image_tag("2h4bwphyx2eqvlg6mtkkai2tnt4q", class:"avatar m-2", alt:"Avatar") %>
+            <%= cl_image_tag("2h4bwphyx2eqvlg6mtkkai2tnt4q", class:"avatar my-2", alt:"Avatar") %>
           <% else %>
-            <%= cl_image_tag post.user.avatar.key, class:"avatar m-2", alt:"Avatar" %>
+            <%= cl_image_tag post.user.avatar.key, class:"avatar my-2 mx-2", alt:"Avatar" %>
           <% end %>
         </div>
-        <div>
+        <div class="mx-2">
           <li><%= post.user.username %></li>
         <% end %>
       </div>
     </div>
     <div class="time-container">
       <% if (Time.now - post.created_at) / 2592000 > 1 %>
-        <%= post.created_at.strftime('%Y-%m-%d %H:%M') %>
+        <%= post.created_at.strftime('%Y-%m-%d') %>
       <% elsif (Time.now - post.created_at) / 604800 > 1 %>
         <%= pluralize(((Time.now - post.created_at) / 604800).to_i, "week") %> ago
       <% elsif (Time.now - post.created_at) / 86400 > 1 %>

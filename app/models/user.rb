@@ -1,11 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
   # before_validation :set_default_avatar, on: :create
-  validates :first_name, :last_name, presence: true, format: { with: /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/, message: "only allows letters"}
+  validates :first_name, :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
   validates :username, presence: true, uniqueness: true, length: { in: 4..18 }
   validates :bio, length: { maximum: 100 }
   validates :email, uniqueness: true, format: Devise.email_regexp
@@ -24,5 +23,4 @@ class User < ApplicationRecord
 
   has_many :chatrooms_as_owner, class_name: 'Chatroom', foreign_key: :user_id, dependent: :destroy
   has_many :chatrooms_as_guest, class_name: 'Chatroom', foreign_key: :user_id, dependent: :destroy
-
 end

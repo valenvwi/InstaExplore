@@ -1,58 +1,46 @@
 .chatroom-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   flex-grow: 1;
   margin: 10px 20px;
   align-items: center;
+  position: relative;
 }
 
 .messages-container {
   flex-grow: 1;
-  height:0;
-  overflow:auto;
+  height: 0;
+  overflow: auto;
   width: 95%;
   margin-top: 10px;
 }
 
-
 .message-form {
-  width:100%;
+  width: 100%;
   margin-top: 20px;
   margin-bottom: -10px;
-  font-size:18px;
+  font-size: 18px;
 }
 
 .message-container {
-  display:flex;
+  display: flex;
   flex-direction: row;
   margin: 15px 50px 15px 0px;
   font-size: 18px;
 }
 
-
 .message-content {
-  display:flex;
+  display: flex;
   align-items: center;
-  background-color:rgb(236, 234, 234);
+  background-color: rgb(236, 234, 234);
   border-radius: 10px;
   padding: 10px;
-  overflow-wrap:anywhere;
+  overflow-wrap: anywhere;
 }
 
-// .message-content-right {
-//   display:flex;
-//   align-items: center;
-//   background-color: blue;
-//   color:white;
-//   border-radius: 10px;
-//   padding: 10px;
-//   overflow-wrap:anywhere;
-// }
-
-
 .fa-arrow-left {
-  position: fixed;
-  left: 30px;
-  top:30px;
+  position: absolute;
+  left: 22px;
+  top: 18px;
   font-size: 20px;
 }

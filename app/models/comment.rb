@@ -8,8 +8,14 @@ class Comment < ApplicationRecord
 
   def notify_recipient
     return if user == post.user
-    CommentNotification.with(message: self, post: post).deliver_later(post.user)
 
-    broadcast_prepend_to "notifications_#{post.user.id}", target: "notifications_#{post.user.id}", partial: "notifications/comment", locals: {user:, post:, unread: true}
+    CommentNotification.with(message: self, post:).deliver_later(post.user)
+
+    broadcast_prepend_to(
+      "notifications_#{post.user.id}",
+      target: "notifications_#{post.user.id}",
+      partial: "notifications/comment",
+      locals: { user:, post:, unread: true }
+    )
   end
 end

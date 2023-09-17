@@ -7,7 +7,12 @@ class Follow < ApplicationRecord
 
   def notify_recipient
     FollowNotification.with(message: self, user: following).deliver_later(following)
-    broadcast_prepend_to "notifications_#{following.id}", target: "notifications_#{following.id}", partial: "notifications/follow", locals: {following:, unread: true}
-  end
 
+    broadcast_prepend_to(
+      "notifications_#{following.id}",
+      target: "notifications_#{following.id}",
+      partial: "notifications/follow",
+      locals: { following:, unread: true }
+    )
+  end
 end
