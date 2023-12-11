@@ -1,8 +1,6 @@
 # Project description
 #### InstaExplore is a mobile application designed to help newcomers discover their local area and connect with people in their vicinity. Inspired by popular social media platforms like Instagram, InstaExplore combines the power of geolocation and user-generated content to create an engaging and interactive experience. InstaExplore aims to make it easier for newcomers to connect with their local community and discover the unique aspects of their area. By bringing people together through shared experiences and visual storytelling, InstaExplore enhances the sense of belonging and encourages exploration, ultimately helping users feel more at home in their new surroundings.
 
-### [Check it out on Heroku :arrow_forward:](https://instaexplore-9b589f2c49e0.herokuapp.com/)
-
 ### Functionality
 
 #### As a user... :sparkles:
